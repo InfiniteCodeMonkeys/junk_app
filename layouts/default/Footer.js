@@ -118,30 +118,22 @@ function Footer(props) {
               <Link href="/faq">
                 <a className={classes.link}>FAQ</a>
               </Link>
-
+              <Link href="/about">
+                <a className={classes.link}>About Us</a>
+              </Link>
+              <Link href="/why">
+                <a className={classes.link}>Why Recycle</a>
+              </Link>
               <Link href="/contact">
                 <a className={classes.link}>Contact</a>
               </Link>
-
-              <Link href="/standards">
-                <a className={classes.link}>Standards</a>
-              </Link>
-
-              <a
-                href="https://medium.com/@carbonundone"
-                target="_blank"
-                rel="noopener"
-                className={classes.link}
-              >
-                Blog
-              </a>
             </Typography>
           </div>
           <div
             className={`${classes.item} ${classes.right} ${classes.social} ${classes.smallLinks}`}
           >
             <a
-              href="https://twitter.com/undonecarbon"
+              href="https://twitter.com/junkdrawr"
               target="_blank"
               rel="noopener"
               className={classes.link}
@@ -149,7 +141,7 @@ function Footer(props) {
               <TwitterIcon fontSize="small" />
             </a>
             <a
-              href="https://facebook.com/carbonundone"
+              href="https://facebook.com/junkdrawr"
               target="_blank"
               rel="noopener"
               className={classes.link}

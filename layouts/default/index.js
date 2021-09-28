@@ -18,7 +18,7 @@ const DefaultLayout = ({ children }) => {
         bgImage=""
         bgImageOpacity={1}
         description="If it doesn't give you joy, give it to me."
-        copyright="© 2020 Carbon Undone, Inc."
+        copyright="© 2021 JUNK DRAWR LLC"
         logo={Logo}
       ></Footer>
     </div>

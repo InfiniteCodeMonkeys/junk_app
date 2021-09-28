@@ -154,7 +154,7 @@ function Navbar(props) {
                     </Link>
                   </Typography>
                   <Typography className={classes.navLinks}>
-                    <Link href="/resources">WHY RECYCLE</Link>
+                    <Link href="/why">WHY RECYCLE</Link>
                   </Typography>
                 </div>
 
@@ -173,7 +173,7 @@ function Navbar(props) {
                       className={classes.signUpButton}
                       color="secondary"
                     >
-                      Get Started
+                      Mail my Junk
                     </Button>
                   </Link>
                 </div>
@@ -213,19 +213,24 @@ function Navbar(props) {
               <ListItemText>Home</ListItemText>
             </ListItem>
           </Link>
-          <Link href="/how">
+          <Link href="/about">
             <ListItem button={true} component="a">
-              <ListItemText>How it Works</ListItemText>
+              <ListItemText>About Us</ListItemText>
             </ListItem>
           </Link>
-          <Link href="/vendors">
+          <Link href="/why">
             <ListItem button={true} component="a">
-              <ListItemText>For vendors</ListItemText>
+              <ListItemText>Why Recycle</ListItemText>
             </ListItem>
           </Link>
-          <Link href="/marketplace">
+          <Link href="/contact">
             <ListItem button={true} component="a">
-              <ListItemText>Marketplace</ListItemText>
+              <ListItemText>Contact Us</ListItemText>
+            </ListItem>
+          </Link>
+          <Link href="/#form">
+            <ListItem button={true} component="a">
+              <ListItemText>Get Started</ListItemText>
             </ListItem>
           </Link>
         </List>

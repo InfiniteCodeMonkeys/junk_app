@@ -49,7 +49,7 @@ function FeaturesSection(props) {
         <SectionHeader
           title={props.title}
           subtitle={props.subtitle}
-          size={4}
+          size={3}
           textAlign="center"
         />
         <Container
