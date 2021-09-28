@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import router from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -42,10 +41,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const handleClick = () => {
-  router.push("/auth/signup");
-};
-
 function MarketingHero(props) {
   const classes = useStyles();
   return (
@@ -70,22 +65,16 @@ function MarketingHero(props) {
         <Typography variant="h2" className={classes.subTitle}>
           {props.subTitle}
         </Typography>
-        <Button
-          variant="contained"
-          size="large"
-          className={classes.button}
-          onClick={handleClick}
-        >
-          Get Started
-        </Button>
-        {/* <div style={{ display: "flex" }}>
-          <Typography variant="h2" className={classes.subText}>
-            Already have an account?{" "}
-          </Typography>
-          <Typography className={classes.link}>
-            <Link href="/auth/signin">Sign In</Link>
-          </Typography>
-        </div> */}
+        <Link href="/" as="/#how">
+          <Button
+            variant="contained"
+            size="large"
+            className={classes.button}
+            // onClick={handleClick}
+          >
+            Get Started
+          </Button>
+        </Link>
       </div>
     </>
   );
