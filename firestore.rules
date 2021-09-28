@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+      match /orders/{id} {
+      allow read: if true;
+      //allow read: if isOwner(); // Would restrict reads to just the item owner
+      allow delete: if isOwner();
+      allow update: if isOwner() && willBeOwner();
+      allow create: if willBeOwner();
+    }
+  }
+  // Check if authenticated user has the specified uid
+function isUser(uid) {
+  return request.auth.uid != null && request.auth.uid == uid;
+}
+
+// Check if user matches current data owner
+function isOwner(){
+  return isUser(currentData().owner);
+}
+
+// Check if user matches potential future data owner
+function willBeOwner(){
+  return isUser(futureData().owner);
+}
+
+function currentData() {
+  return resource.data;
+}
+
+// Get future state of data if write were accepted
+function futureData() {
+  return request.resource.data;
+}
+}
+ 
