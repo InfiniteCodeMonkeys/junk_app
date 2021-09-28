@@ -17,6 +17,7 @@
 
 # Firebase Service Acct
 /service-account.json
+/prod-service-account.json
 
 # misc
 .DS_Store
