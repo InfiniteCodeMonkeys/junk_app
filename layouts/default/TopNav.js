@@ -13,7 +13,6 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useAuth } from "../../utils/auth.js";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { deepOrange } from "@material-ui/core/colors";
@@ -127,7 +126,6 @@ const useStyles = makeStyles((theme) => ({
 function Navbar(props) {
   const router = useRouter();
   const classes = useStyles();
-  const auth = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const logo = props.logo;
@@ -166,21 +164,19 @@ function Navbar(props) {
                   style={{ margin: 10 }}
                 />
 
-                {!auth.user && (
-                  <div style={{ marginTop: 5 }}>
-                    <Link href="/auth/newVendor" passHref={true}>
-                      <Button
-                        color="inherit"
-                        component="a"
-                        variant="contained"
-                        className={classes.signUpButton}
-                        color="secondary"
-                      >
-                        Get Started
-                      </Button>
-                    </Link>
-                  </div>
-                )}
+                <div style={{ marginTop: 5 }}>
+                  <Link href="/#form" passHref={true}>
+                    <Button
+                      color="inherit"
+                      component="a"
+                      variant="contained"
+                      className={classes.signUpButton}
+                      color="secondary"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </Toolbar>
@@ -232,56 +228,6 @@ function Navbar(props) {
               <ListItemText>Marketplace</ListItemText>
             </ListItem>
           </Link>
-
-          {!auth.user && (
-            <div>
-              <Link href="/auth/signin" passHref={true}>
-                <ListItem button={true} component="a">
-                  <ListItemText>Log in</ListItemText>
-                </ListItem>
-              </Link>
-
-              {pathname === "/vendors" ? (
-                <Link href="/auth/newVendor" passHref={true}>
-                  <ListItem button={true} component="a">
-                    <ListItemText>Sign up</ListItemText>
-                  </ListItem>
-                </Link>
-              ) : (
-                <Link href="/auth/signup" passHref={true}>
-                  <ListItem button={true} component="a">
-                    <ListItemText>Sign up</ListItemText>
-                  </ListItem>
-                </Link>
-              )}
-            </div>
-          )}
-
-          {auth.user && (
-            <>
-              <Link href="/dashboard" passHref={true}>
-                <ListItem button={true} component="a">
-                  <ListItemText>Dashboard</ListItemText>
-                </ListItem>
-              </Link>
-
-              <Link href="/settings/general" passHref={true}>
-                <ListItem button={true} component="a">
-                  <ListItemText>Settings</ListItemText>
-                </ListItem>
-              </Link>
-
-              <Divider />
-              <ListItem
-                button={true}
-                onClick={(event) => {
-                  auth.signout();
-                }}
-              >
-                <ListItemText>Sign out</ListItemText>
-              </ListItem>
-            </>
-          )}
         </List>
       </Drawer>
     </Section>
