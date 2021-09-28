@@ -4,10 +4,10 @@ const stripe = require("./_stripe.js");
 var shippo = require("shippo")(process.env.SHIPPO_API_KEY);
 const sgMail = require("@sendgrid/mail");
 
-const TEMPLATE_ID7 = "d-1216c059d61a4dd6829feabcfe6ea870";
+const TEMPLATE_USER = "d-f09a8d85a0ee4517b93fe17ed08600f7";
+const TEMPLATE_ADMIN = "d-532fe0f959794f5f89eecf62a818cda5";
 
-const API_KEY =
-  SG.S0uxYceDTf22mdmgrNmbeQ.PVhUEeY2okQgkJPmHubjH2FLNxuGn - PgiNXNIENOrng; //For send grid
+const API_KEY = process.env.SENDGRID_KEY; //For send grid
 
 sgMail.setApiKey(API_KEY);
 
@@ -39,8 +39,8 @@ export default async (req, res) => {
       case "checkout.session.completed":
         //Get the order
 
-        // const order = await getOrderByCustomerId(object.customer);//
-        const order = await getOrderByCustomerId("cus_KIcs3cphRwoaUd");
+        const order = await getOrderByCustomerId(object.customer); //
+        // const order = await getOrderByCustomerId("cus_KIcs3cphRwoaUd");
 
         // Get the rate
         const rate = order.bestOption;
@@ -61,7 +61,7 @@ export default async (req, res) => {
               console.log(transaction);
 
               // Update the current user
-              await updateOrderByCustomerId("cus_KIcs3cphRwoaUd", {
+              await updateOrderByCustomerId(object.customer, {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL
@@ -74,21 +74,19 @@ export default async (req, res) => {
                 // Use Send Grid to Send Email
                 const msg = {
                   to: order.address.contactEmail,
-                  from: "hello@carbonundone.com",
-                  template_id: TEMPLATE_ID7,
+                  from: "hello@junk-drawr.com",
+                  template_id: TEMPLATE_USER,
                   dynamic_template_data: {
-                    receipt: true,
-                    shippingLabel: transaction.label_url,
+                    shippingURL: transaction.label_url,
                     trackingURL: transaction.tracking_url_provider,
                   },
                 };
                 const adminMsg = {
-                  to: "mike.s.dyer@gmail.com",
-                  from: "hello@carbonundone.com",
-                  template_id: TEMPLATE_ID7,
+                  to: "mike@junk-drawr.com",
+                  from: "hello@junk-drawr.com",
+                  template_id: TEMPLATE_ADMIN,
                   dynamic_template_data: {
-                    receipt: true,
-                    shippingLabel: transaction.label_url,
+                    shippingURL: transaction.label_url,
                     trackingURL: transaction.tracking_url_provider,
                   },
                 };
