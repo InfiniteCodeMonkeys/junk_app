@@ -49,21 +49,26 @@ function index() {
     const amount = Number(getOptions[0].amount);
 
     const shippingCost = amount * 100; //Stripe works in cents so we divide by 100
+    console.log(shippingCost);
 
-    setData({ ...data, shippingCost, bestOption: getOptions[0], id: uid });
-    // Update Firebase
+    if (!amount) {
+      alert("There's a problem with your address or dimensions.");
+    } else {
+      setData({ ...data, shippingCost, bestOption: getOptions[0], id: uid });
+      // Update Firebase
 
-    await createOrder(uid, data).then(async (order) => {
-      console.log(order);
-      const session = await apiRequest("create-stripe-checkout", "POST", {
-        shippingCost,
+      await createOrder(uid, data).then(async (order) => {
+        console.log(order);
+        const session = await apiRequest("create-stripe-checkout", "POST", {
+          shippingCost,
+        });
+
+        stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
+        setPending(false);
       });
-
-      stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
-      setPending(false);
-    });
+    }
 
     // Open Stripe Checkout
   };
