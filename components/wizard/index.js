@@ -58,7 +58,7 @@ function index() {
       const session = await apiRequest("create-stripe-checkout", "POST", {
         shippingCost,
       });
-      console.log(session);
+
       stripe.redirectToCheckout({
         sessionId: session.id,
       });
