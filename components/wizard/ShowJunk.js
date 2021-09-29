@@ -90,10 +90,10 @@ function index({ data, setData }) {
           />
 
           <DropzoneArea
-            acceptedFiles={[".png", ".jpg"]}
+            acceptedFiles={[".png", ".jpg", ".heic", ".heif"]}
             cancelButtonText={"cancel"}
             submitButtonText={"submit"}
-            maxFileSize={5000000}
+            maxFileSize={10000000}
             onChange={handleFileUpload}
             showPreviews={true}
             showFileNamesInPreview={true}

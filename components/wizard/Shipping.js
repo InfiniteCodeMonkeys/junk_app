@@ -78,7 +78,7 @@ function Shipping({ data, setData, pending, handleSubmit }) {
         <Container maxWidth="md">
           <SectionHeader
             title="Step Four: And now tell us about your box"
-            subtitle="How big is it and where is it coming from?"
+            subtitle="How big is it and where is it coming from? We need the dimensions and weight of the box you are shipping."
             size="3"
             textAlign="center"
             textColor="#0e697b"
@@ -183,6 +183,7 @@ function Shipping({ data, setData, pending, handleSubmit }) {
               />
             </Grid>
             <Grid item={true} xs={12}>
+              <InputLabel style={{ marginBottom: 10 }}>Country *</InputLabel>
               <Select
                 variant="outlined"
                 name="country"

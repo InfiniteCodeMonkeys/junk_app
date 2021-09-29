@@ -3,12 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import { urlObjectKeys } from "next/dist/shared/lib/utils";
 
 const useStyles = makeStyles((theme) => ({
   title: {
+    marginTop: 150,
     marginBottom: 20,
-    fontSize: 36,
-    //fontWeight: 500,
+    fontSize: 48,
+    fontWeight: 800,
     color: "#fff",
     zIndex: 1,
   },
@@ -23,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginBottom: 10,
-    color: "#a1c181",
-    backgroundColor: "#fff",
+    color: "#fff",
+    backgroundColor: "#a1c181",
     borderRadius: 0,
     zIndex: 1,
   },
@@ -55,8 +57,9 @@ function MarketingHero(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#a1c181",
+          justifyContent: "start",
+          backgroundColor: "#000",
+          backgroundImage: `url("/images/ewaste.jpg")`,
         }}
       >
         <Typography variant="h1" className={classes.title}>
@@ -66,13 +69,8 @@ function MarketingHero(props) {
           {props.subTitle}
         </Typography>
         <Link href="/" as="/#form">
-          <Button
-            variant="contained"
-            size="large"
-            className={classes.button}
-            // onClick={handleClick}
-          >
-            Get Started
+          <Button variant="contained" size="large" className={classes.button}>
+            Mail my junk
           </Button>
         </Link>
       </div>
