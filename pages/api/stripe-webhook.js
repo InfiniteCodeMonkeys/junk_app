@@ -57,7 +57,7 @@ export default async (req, res) => {
           async function (err, transaction) {
             // asynchronous callback
 
-            if (!err) {
+            try {
               console.log(transaction);
 
               // Update the current user
@@ -91,10 +91,10 @@ export default async (req, res) => {
                   },
                 };
                 sgMail.send(adminMsg);
-                return sgMail.send(msg);
+                sgMail.send(msg);
               });
-            } else {
-              console.log(err);
+            } catch {
+              return res.status(400).send({ status: "FAILED", data: err });
             }
           }
         );
