@@ -17,7 +17,7 @@ export default requireAuth(async (req, res) => {
 
     const shippingCost = body.shippingCost;
 
-    const total = Number(shippingCost) + 200;
+    const total = Math.round(Number(shippingCost) + 200);
 
     const email = address.contactEmail;
     console.log(email);

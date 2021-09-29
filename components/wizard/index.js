@@ -53,7 +53,7 @@ function index() {
     setData({ ...data, shippingCost, bestOption: getOptions[0], id: uid });
     // Update Firebase
 
-    createOrder(uid, data).then(async (order) => {
+    await createOrder(uid, data).then(async (order) => {
       console.log(order);
       const session = await apiRequest("create-stripe-checkout", "POST", {
         shippingCost,
