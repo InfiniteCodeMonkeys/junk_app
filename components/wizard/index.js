@@ -68,9 +68,9 @@ function index() {
         shippingCost,
       });
 
-      // stripe.redirectToCheckout({
-      //   sessionId: session.id,
-      // });
+      stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
       setPending(false);
     }
 
