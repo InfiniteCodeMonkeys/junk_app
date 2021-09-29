@@ -9,17 +9,18 @@ export default requireAuth(async (req, res) => {
   const user = req.user;
   const body = req.body;
 
-  try {
-    let { email, stripeCustomerId } = await getOrder(user.uid);
+  console.log(user);
+  console.log(user.uid);
 
-    // let email = "mike.s.dyer@gmail.com";
-    // let stripeCustomerId;
-    // let shippingCost = 3600;
+  try {
+    let { address, stripeCustomerId } = await getOrder(user.uid);
 
     const shippingCost = body.shippingCost;
 
     const total = Number(shippingCost) + 200;
 
+    const email = address.contactEmail;
+    console.log(email);
     console.log(shippingCost);
 
     console.log(total);
@@ -28,15 +29,15 @@ export default requireAuth(async (req, res) => {
     if (!stripeCustomerId) {
       const customer = await stripe.customers.create({ email: email });
 
-      // await updateOrder(user.uid, {
-      //   stripeCustomerId: customer.id,
-      // });
+      await updateOrder(user.uid, {
+        stripeCustomerId: customer.id,
+      });
 
       stripeCustomerId = customer.id;
     }
 
     //Stripe completes the payment in its own session
-    const createSession = async (shippingCost) => {
+    const createSession = async (total) => {
       // Create a checkout session
       const session = await stripe.checkout.sessions.create({
         customer: stripeCustomerId,
@@ -72,7 +73,7 @@ export default requireAuth(async (req, res) => {
       res.send({ status: "success", data: session });
     };
 
-    createSession(shippingCost);
+    createSession(total);
   } catch (error) {
     console.log("stripe-create-checkout-session error", error);
 

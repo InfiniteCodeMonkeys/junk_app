@@ -53,17 +53,17 @@ function index() {
     setData({ ...data, shippingCost, bestOption: getOptions[0], id: uid });
     // Update Firebase
 
-    const order = await createOrder(uid, data);
-    console.log(order);
-
-    const session = await apiRequest("create-stripe-checkout", "POST", {
-      shippingCost,
+    createOrder(uid, data).then(async (order) => {
+      console.log(order);
+      const session = await apiRequest("create-stripe-checkout", "POST", {
+        shippingCost,
+      });
+      console.log(session);
+      stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+      setPending(false);
     });
-    console.log(session);
-    stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-    setPending(false);
 
     // Open Stripe Checkout
   };
