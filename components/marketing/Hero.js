@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 800,
     color: "#fff",
     zIndex: 1,
+    textAlign: "center",
   },
   subTitle: {
     marginBottom: 20,
