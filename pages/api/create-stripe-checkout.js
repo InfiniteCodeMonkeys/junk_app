@@ -7,13 +7,16 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
 
 export default requireAuth(async (req, res) => {
   const user = req.user;
+  const body = req.body;
 
   try {
-    let { email, stripeCustomerId, shippingCost } = await getOrder(user.uid);
+    let { email, stripeCustomerId } = await getOrder(user.uid);
 
     // let email = "mike.s.dyer@gmail.com";
     // let stripeCustomerId;
     // let shippingCost = 3600;
+
+    const shippingCost = body.shippingCost;
 
     const total = Number(shippingCost) + 200;
 

@@ -55,7 +55,9 @@ function index() {
 
     await createOrder(uid, data);
 
-    const session = await apiRequest("create-stripe-checkout", "POST");
+    const session = await apiRequest("create-stripe-checkout", "POST", {
+      shippingCost,
+    });
 
     stripe.redirectToCheckout({
       sessionId: session.id,
