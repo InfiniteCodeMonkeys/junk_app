@@ -45,7 +45,7 @@ function index() {
 
     // Calculate shipping cost
     const getOptions = await apiRequest("get-shipping-rates", "POST", data);
-
+    console.log(getOptions);
     const amount = Number(getOptions[0].amount);
 
     const shippingCost = amount * 100; //Stripe works in cents so we divide by 100
@@ -53,12 +53,13 @@ function index() {
     setData({ ...data, shippingCost, bestOption: getOptions[0], id: uid });
     // Update Firebase
 
-    await createOrder(uid, data);
+    const order = await createOrder(uid, data);
+    console.log(order);
 
     const session = await apiRequest("create-stripe-checkout", "POST", {
       shippingCost,
     });
-
+    console.log(session);
     stripe.redirectToCheckout({
       sessionId: session.id,
     });
