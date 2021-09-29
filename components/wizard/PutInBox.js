@@ -19,7 +19,12 @@ function index() {
             textColor="#0e697b"
           />
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <Image src="/images/junk_in_box.png" height="200" width="600" />
+            <Image
+              src="/images/junk_in_box.png"
+              height="200"
+              width="600"
+              alt="Putting Junk in Box"
+            />
           </div>
         </Container>
         {/* Some Image of an arrow and junk going into my cardboard box */}
