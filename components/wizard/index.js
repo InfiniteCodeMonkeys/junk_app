@@ -62,17 +62,16 @@ function index() {
         shippingCost,
         bestOption: getOptions[0],
         id: uid,
-      }).then(async (order) => {
-        console.log(order);
-        const session = await apiRequest("create-stripe-checkout", "POST", {
-          shippingCost,
-        });
-
-        stripe.redirectToCheckout({
-          sessionId: session.id,
-        });
-        setPending(false);
       });
+
+      const session = await apiRequest("create-stripe-checkout", "POST", {
+        shippingCost,
+      });
+
+      // stripe.redirectToCheckout({
+      //   sessionId: session.id,
+      // });
+      setPending(false);
     }
 
     // Open Stripe Checkout

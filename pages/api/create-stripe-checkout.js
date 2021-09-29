@@ -65,7 +65,7 @@ export default requireAuth(async (req, res) => {
       console.log(user.uid);
       console.log(session.payment_intent);
       //Update the order in firebase. This is one order for the whole cart. Even if you have multiple items.
-      updateOrder(user.uid, {
+      await updateOrder(user.uid, {
         paymentIntent: session.payment_intent,
         stripeCustomerId,
       });
