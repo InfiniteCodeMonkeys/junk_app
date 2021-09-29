@@ -48,7 +48,7 @@ export default async (req, res) => {
         console.log(rate.object_id);
 
         // Buy Shipping Label
-        shippo.transaction.create(
+        await shippo.transaction.create(
           {
             rate: rate.object_id,
             label_file_type: "PDF",
