@@ -19,6 +19,8 @@ export function useUser(uid) {
 
 /**** ORDERS ****/
 export function createOrder(uid, data) {
+  console.log(uid);
+  console.log(data);
   return firestore
     .collection("orders")
     .doc(uid)
