@@ -16,7 +16,7 @@ export default function Home() {
           title="Put your junk in a box"
           subTitle="Responsibly get rid of your junk drawer."
         />
-        <div id="how" />
+        <div id="form" style={{ marginTop: 40 }} />
         <Wizard id="#form" />
       </main>
     </div>
