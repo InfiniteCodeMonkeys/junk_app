@@ -39,6 +39,10 @@ function Success() {
       <Head>
         <title>Junk Drawr | Success</title>
         <link rel="icon" href="/images/box.png" />
+        <meta
+          name="description"
+          content="Junk Drawr is an electronic waste processing company. This is the success page for customers."
+        />
       </Head>
       <div style={{ marginTop: 60 }} />
 

@@ -37,7 +37,7 @@ function FaqPage(props) {
         <link rel="icon" href="/images/box.png" alt="Junk Drawr Logo" />
         <meta
           name="description"
-          content="A B2B marketplace for sustainable goods and services. Find solutions to reduce and offset your small business's carbon footprint."
+          content="Junk Drawr is an electronic waste processing company. Let's answer some of your burning questions."
         />
       </Head>
       <FaqSection

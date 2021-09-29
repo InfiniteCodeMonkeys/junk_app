@@ -33,6 +33,10 @@ export default function WhyPage() {
       <Head>
         <title>Junk Drawr | Why Recycle</title>
         <link rel="icon" href="/images/box.png" />
+        <meta
+          name="description"
+          content="Junk Drawr is an electronic waste processing company. Why should you recycle your e-waste?"
+        />
       </Head>
       <Section bg="light" textColor="text">
         <Container style={{ marginTop: 80 }} maxWidth="md">
