@@ -39,7 +39,7 @@ export default async (req, res) => {
       case "checkout.session.completed":
         //Get the order
 
-        const order = await getOrderByCustomerId("cus_KJoIDUjmnhMpvN"); //
+        const order = await getOrderByCustomerId(object.customer); //
         // const order = await getOrderByCustomerId("cus_KIcs3cphRwoaUd");
 
         // Get the rate
@@ -61,7 +61,7 @@ export default async (req, res) => {
               console.log(transaction);
 
               // Update the current user
-              await updateOrderByCustomerId("cus_KJoIDUjmnhMpvN", {
+              await updateOrderByCustomerId(object.customer, {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL
