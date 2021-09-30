@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
 
   renderSnippet() {
     const opts = {
-      apiKey: ANALYTICS_WRITE_KEY,
+      apiKey: ANALYTICS_WRITE_KEY, //What the fuck is this? Segment?
       // note: the page option only covers SSR tracking.
       // Page.js is used to track other events using `window.analytics.page()`
       page: true,
