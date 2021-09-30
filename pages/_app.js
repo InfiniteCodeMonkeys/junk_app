@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/globals.css";
 import firebase from "utils/firebase";
 import { ThemeProvider } from "utils/theme.js";
