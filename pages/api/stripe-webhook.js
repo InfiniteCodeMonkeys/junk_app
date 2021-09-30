@@ -39,7 +39,7 @@ export default async (req, res) => {
       case "checkout.session.completed":
         //Get the order
 
-        const order = await getOrderByCustomerId(object.customer); //
+        const order = await getOrderByCustomerId("cus_KJoIDUjmnhMpvN"); //
         // const order = await getOrderByCustomerId("cus_KIcs3cphRwoaUd");
 
         // Get the rate
@@ -52,7 +52,7 @@ export default async (req, res) => {
           {
             rate: rate.object_id,
             label_file_type: "PDF",
-            async: false,
+            async: true,
           },
           async function (err, transaction) {
             // asynchronous callback
@@ -61,7 +61,7 @@ export default async (req, res) => {
               console.log(transaction);
 
               // Update the current user
-              await updateOrderByCustomerId(object.customer, {
+              await updateOrderByCustomerId("cus_KJoIDUjmnhMpvN", {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL
