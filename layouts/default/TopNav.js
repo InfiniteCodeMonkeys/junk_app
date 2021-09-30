@@ -149,9 +149,7 @@ function Navbar(props) {
               <div className={classes.endGroup}>
                 <div style={{ display: "flex", marginTop: 10 }}>
                   <Typography className={classes.navLinks}>
-                    <Link href="/" as="/about">
-                      ABOUT US
-                    </Link>
+                    <Link href="/about">ABOUT US</Link>
                   </Typography>
                   <Typography className={classes.navLinks}>
                     <Link href="/why">WHY RECYCLE</Link>
