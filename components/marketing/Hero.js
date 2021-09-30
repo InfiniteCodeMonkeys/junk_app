@@ -56,8 +56,7 @@ function MarketingHero(props) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#000",
-          backgroundImage: `url("/images/ewaste_cropped.jpg")`,
+          background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/ewaste_cropped.jpg")`,
         }}
       >
         <Typography variant="h1" className={classes.title}>
