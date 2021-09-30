@@ -1,13 +1,13 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
-import * as snippet from "@segment/snippet";
+//import * as snippet from "@segment/snippet";
 
-const {
-  // This write key is associated with https://segment.com/nextjs-example/sources/nextjs.
-  ANALYTICS_WRITE_KEY = process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY,
-  NODE_ENV = "development",
-} = process.env;
+// const {
+//   // This write key is associated with https://segment.com/nextjs-example/sources/nextjs.
+//   ANALYTICS_WRITE_KEY = process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY,
+//   NODE_ENV = "development",
+// } = process.env;
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -32,20 +32,20 @@ export default class MyDocument extends Document {
     };
   }
 
-  renderSnippet() {
-    const opts = {
-      apiKey: ANALYTICS_WRITE_KEY, //What the fuck is this? Segment?
-      // note: the page option only covers SSR tracking.
-      // Page.js is used to track other events using `window.analytics.page()`
-      page: true,
-    };
+  // renderSnippet() {
+  //   const opts = {
+  //     apiKey: ANALYTICS_WRITE_KEY, //What the fuck is this? Segment?
+  //     // note: the page option only covers SSR tracking.
+  //     // Page.js is used to track other events using `window.analytics.page()`
+  //     page: true,
+  //   };
 
-    if (NODE_ENV === "development") {
-      return snippet.max(opts);
-    }
+  //   if (NODE_ENV === "development") {
+  //     return snippet.max(opts);
+  //   }
 
-    return snippet.min(opts);
-  }
+  //   return snippet.min(opts);
+  // }
 
   render() {
     return (
@@ -56,7 +56,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
           {/* Inject the Segment snippet into the <head> of the document  */}
-          <script dangerouslySetInnerHTML={{ __html: this.renderSnippet() }} />
+          {/* <script dangerouslySetInnerHTML={{ __html: this.renderSnippet() }} /> */}
 
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta
