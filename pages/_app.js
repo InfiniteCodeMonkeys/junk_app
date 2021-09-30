@@ -7,7 +7,9 @@ import DefaultLayout from "../layouts/default";
 function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || DefaultLayout;
 
-  firebase.analytics();
+  if (typeof window != undefined) {
+    firebase.analytics();
+  }
   return (
     <ThemeProvider>
       <Layout>
