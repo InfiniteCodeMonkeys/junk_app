@@ -1,13 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import { urlObjectKeys } from "next/dist/shared/lib/utils";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    marginTop: 150,
     marginBottom: 20,
     fontSize: 48,
     fontWeight: 800,
@@ -58,9 +55,9 @@ function MarketingHero(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "start",
+          justifyContent: "center",
           backgroundColor: "#000",
-          backgroundImage: `url("/images/ewaste.jpg")`,
+          backgroundImage: `url("/images/ewaste_cropped.jpg")`,
         }}
       >
         <Typography variant="h1" className={classes.title}>
