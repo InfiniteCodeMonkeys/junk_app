@@ -3,7 +3,7 @@ import React from "react";
 class Crisp extends React.Component {
   componentDidMount() {
     window.$crisp = [];
-    window.CRISP_WEBSITE_ID = "b3ee728d-16d4-4056-a9ab-424957dce3dc";
+    window.CRISP_WEBSITE_ID = "df98f6cd-c3f5-4b15-8bc5-7eecb52746b3";
 
     (function () {
       var d = document;
