@@ -1,5 +1,6 @@
 //get size and dimensions
 import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import Section from "components/primitives/Section";
 import SectionHeader from "components/primitives/SectionHeader";
 import Grid from "@material-ui/core/Grid";
@@ -29,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Shipping({ data, setData, pending, handleSubmit }) {
+function Shipping({ data, setData, pending }) {
+  const { register, errors, setValue, control } = useForm();
   const [address, setAddress] = useState({
     contactName: "",
     contactEmail: "",
@@ -94,8 +96,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 value={address.contactName}
                 onChange={handleAddress}
                 required
-                //  error={errors.email ? true : false}
-                //  helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -108,8 +108,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 value={address.contactEmail}
                 onChange={handleAddress}
                 required
-                //  error={errors.email ? true : false}
-                //  helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -122,8 +120,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 value={address.streetAddress}
                 onChange={handleAddress}
                 required
-                //  error={errors.email ? true : false}
-                // helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -135,8 +131,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 name="streetAddress2"
                 value={address.streetAddress2}
                 onChange={handleAddress}
-                //     error={errors.email ? true : false}
-                //     helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -149,8 +143,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 value={address.city}
                 onChange={handleAddress}
                 required
-                //    error={errors.email ? true : false}
-                //    helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -163,8 +155,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 value={address.state}
                 onChange={handleAddress}
                 required
-                //     error={errors.email ? true : false}
-                //    helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -177,8 +167,6 @@ function Shipping({ data, setData, pending, handleSubmit }) {
                 value={address.zipCode}
                 onChange={handleAddress}
                 required
-                //   error={errors.email ? true : false}
-                //   helperText={errors.email && errors.email.message}
                 fullWidth={true}
               />
             </Grid>
@@ -307,7 +295,7 @@ function Shipping({ data, setData, pending, handleSubmit }) {
           >
             <Button
               variant="contained"
-              onClick={handleSubmit}
+              type="submit"
               className={classes.completeButton}
               size="large"
             >

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import firebase from "utils/firebase";
 import PutInBox from "./PutInBox";
 import TellJunk from "./TellJunk";
@@ -19,6 +20,7 @@ loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, {
 });
 
 function index() {
+  const { handleSubmit } = useForm();
   const [pending, setPending] = useState(false);
   const [data, setData] = useState({});
   const [uid, setUID] = useState();
@@ -39,11 +41,13 @@ function index() {
       });
   }, []);
 
-  const handleSubmit = async () => {
+  const onSubmit = async () => {
     // Show pending indicator
+
     setPending(true);
 
     // Calculate shipping cost
+
     const getOptions = await apiRequest("get-shipping-rates", "POST", data);
     console.log(getOptions);
     const amount = Number(getOptions[0].amount);
@@ -51,7 +55,7 @@ function index() {
     const shippingCost = amount * 100; //Stripe works in cents so we divide by 100
     console.log(shippingCost);
 
-    if (!amount) {
+    if (!getOptions[0].amount) {
       alert("There's a problem with your address or dimensions.");
     } else {
       setData({ ...data, shippingCost, bestOption: getOptions[0], id: uid });
@@ -79,15 +83,12 @@ function index() {
 
   return (
     <>
-      <PutInBox />
-      <TellJunk data={data} setData={setData} />
-      <ShowJunk data={data} />
-      <Shipping
-        data={data}
-        setData={setData}
-        pending={pending}
-        handleSubmit={handleSubmit}
-      />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <PutInBox />
+        <TellJunk data={data} setData={setData} />
+        <ShowJunk data={data} />
+        <Shipping data={data} setData={setData} pending={pending} />
+      </form>
     </>
   );
 }
