@@ -63,16 +63,6 @@ export default class MyDocument extends Document {
             httpEquiv="Content-Type"
             content="text/html; charset=ISO-8859-1"
           />
-          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-159312647-2"
-          ></script>
-          <script>
-            window.dataLayer = window.dataLayer || []; function gtag()
-            {dataLayer.push(arguments)}
-            gtag('js', new Date()); gtag('config', 'UA-159312647-2');
-          </script>
         </Head>
         <body>
           <Main />

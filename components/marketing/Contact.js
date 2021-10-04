@@ -23,21 +23,10 @@ function Contact(props) {
     setPending(true);
 
     createNewMessage(data)
-      .then(() => {
-        sendNewMessageEmail();
-      })
-      .then(() => {
-        global.analytics.track("Contact Form Submitted", {
-          data,
-        });
-        // Clear form
-        reset();
-        // Show success alert message
-        setFormAlert({
-          type: "success",
-          message: "Your message has been sent!",
-        });
-      })
+      // .then(() => {
+      //   sendNewMessageEmail();
+      // })
+
       .catch((error) => {
         // Show error alert message
         setFormAlert({
