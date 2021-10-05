@@ -65,7 +65,7 @@ function MarketingHero(props) {
         <Typography variant="h2" className={classes.subTitle}>
           {props.subTitle}
         </Typography>
-        <Link href="/" as="/#form">
+        <Link href="/wizard">
           <Button variant="contained" size="large" className={classes.button}>
             Mail my junk
           </Button>
