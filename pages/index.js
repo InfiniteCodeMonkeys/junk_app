@@ -1,8 +1,28 @@
+import React, { useState, useEffect } from "react";
+import firebase from "utils/firebase";
 import Head from "next/head";
 import Hero from "../components/marketing/Hero";
-import Wizard from "components/wizard";
+import How from "components/marketing/How";
+import CtaSection from "components/marketing/CtaSection";
 
 export default function Home() {
+  const [uid, setUID] = useState();
+
+  useEffect(() => {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then((user) => {
+        // Signed in..
+
+        setUID(user.user.uid);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(`Error Msg: ${errorMessage} with error code ${errorCode}`);
+      });
+  }, []);
   return (
     <div>
       <Head>
@@ -27,10 +47,22 @@ export default function Home() {
       <main>
         <Hero
           title="Put your junk in a box"
-          subTitle="Responsibly get rid of your junk drawer."
+          subTitle="Easily recycle unwanted electronics in 5 mins or less"
+          //subTitle="We help you sustainably recycle old chargers, earphones, cameras, phones, laptops, and batteries."
         />
-        <div id="form" style={{ marginTop: 40 }} />
-        <Wizard id="#form" />
+        <How />
+        <CtaSection
+          bg="#f8f8f8"
+          textColor="#0e697b"
+          size="medium"
+          bgImage=""
+          bgImageOpacity={1}
+          title="Ready to clean out that junk drawer?"
+          subtitle=""
+          buttonText="Get Started"
+          buttonColor="secondary"
+          uid={uid}
+        />
       </main>
     </div>
   );

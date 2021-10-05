@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Shipping({ data, setData, pending }) {
+function Shipping({ data, setData, pending, contactEmail, contactName }) {
   const { register, errors, setValue, control } = useForm();
   const [address, setAddress] = useState({
-    contactName: "",
-    contactEmail: "",
+    contactName: contactName || "",
+    contactEmail: contactEmail || "",
     streetAddress: "",
     streetAddress2: "",
     city: "",

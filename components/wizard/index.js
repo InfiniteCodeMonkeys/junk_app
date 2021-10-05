@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import firebase from "utils/firebase";
 import PutInBox from "./PutInBox";
@@ -21,24 +22,33 @@ loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, {
 
 function index() {
   const { handleSubmit } = useForm();
+  const router = useRouter();
   const [pending, setPending] = useState(false);
   const [data, setData] = useState({});
   const [uid, setUID] = useState();
 
-  useEffect(() => {
-    firebase
-      .auth()
-      .signInAnonymously()
-      .then((user) => {
-        // Signed in..
+  const { contactName, contactEmail, id } = router.query;
 
-        setUID(user.user.uid);
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(`Error Msg: ${errorMessage} with error code ${errorCode}`);
-      });
+  useEffect(() => {
+    if (!id) {
+      firebase
+        .auth()
+        .signInAnonymously()
+        .then((user) => {
+          // Signed in..
+
+          setUID(user.user.uid);
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(
+            `Error Msg: ${errorMessage} with error code ${errorCode}`
+          );
+        });
+    } else {
+      setUID(id);
+    }
   }, []);
 
   const onSubmit = async () => {
@@ -87,7 +97,13 @@ function index() {
         <PutInBox />
         <TellJunk data={data} setData={setData} />
         <ShowJunk data={data} />
-        <Shipping data={data} setData={setData} pending={pending} />
+        <Shipping
+          data={data}
+          setData={setData}
+          pending={pending}
+          contactEmail={contactEmail}
+          contactName={contactName}
+        />
       </form>
     </>
   );
