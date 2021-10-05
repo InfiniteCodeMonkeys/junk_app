@@ -13,6 +13,13 @@ function NewSolutionsSection() {
         >
           HOW IT WORKS
         </Typography>
+        <Typography
+          variant="h4"
+          style={{ fontWeight: 500, paddingTop: 40, color: "#3d3d3d" }}
+        >
+          We help you sustainably recycle old chargers, earphones, cameras,
+          phones, laptops, and batteries.
+        </Typography>
         <div style={{ marginTop: 63 }}>
           <div style={{ display: "flex" }}>
             <div style={{ width: "70%", marginTop: 30 }}>

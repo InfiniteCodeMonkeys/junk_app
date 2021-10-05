@@ -58,7 +58,7 @@ export default function Home() {
           bgImage=""
           bgImageOpacity={1}
           title="Ready to clean out that junk drawer?"
-          subtitle=""
+          subtitle="Just pay the shipping to our warehouse and we'll sort & recycle your items for you to help save you hours of time."
           buttonText="Get Started"
           buttonColor="secondary"
           uid={uid}
