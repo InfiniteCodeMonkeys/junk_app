@@ -35,6 +35,7 @@ function CtaSection(props) {
   const [data, setData] = useState({
     contactName: "",
     contactEmail: "",
+    status: "Checkout Incomplete",
   });
 
   const handleAddress = (event) => {
@@ -85,7 +86,7 @@ function CtaSection(props) {
           />
           <div style={{ display: "flex", margin: 20 }}>
             <TextField
-              variant="outlined"
+              variant="filled"
               type="text"
               label="Name"
               name="contactName"
@@ -96,7 +97,7 @@ function CtaSection(props) {
             />
 
             <TextField
-              variant="outlined"
+              variant="filled"
               type="text"
               label="Best Email"
               name="contactEmail"
