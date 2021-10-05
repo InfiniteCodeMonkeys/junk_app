@@ -38,23 +38,23 @@ const themeConfig = {
   },
 
   // Dark theme
-  dark: {
-    palette: {
-      type: "dark",
-      primary: {
-        // Same as in light but we could
-        // adjust color hue if needed
-        main: colors.indigo["500"],
-      },
-      secondary: {
-        main: colors.pink["500"],
-      },
-      background: {
-        default: colors.grey["900"],
-        paper: colors.grey["800"],
-      },
-    },
-  },
+  // dark: {
+  //   palette: {
+  //     type: "dark",
+  //     primary: {
+  //       // Same as in light but we could
+  //       // adjust color hue if needed
+  //       main: colors.indigo["500"],
+  //     },
+  //     secondary: {
+  //       main: colors.pink["500"],
+  //     },
+  //     background: {
+  //       default: colors.grey["900"],
+  //       paper: colors.grey["800"],
+  //     },
+  //   },
+  // },
 
   // Values for both themes
   common: {
@@ -135,7 +135,7 @@ export const ThemeProvider = (props) => {
     isDarkModeStored === undefined ? prefersDarkMode : isDarkModeStored;
 
   // Get MUI theme object
-  const themeName = isDarkMode ? "dark" : "light";
+  const themeName = isDarkMode ? "light" : "light"; //Fuck dark mode
   const theme = getTheme(themeName);
 
   // Add toggle function to theme object
