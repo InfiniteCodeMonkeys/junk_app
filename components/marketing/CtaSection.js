@@ -98,7 +98,7 @@ function CtaSection(props) {
             <TextField
               variant="outlined"
               type="text"
-              label="Email"
+              label="Best Email"
               name="contactEmail"
               value={data.contactEmail}
               onChange={handleAddress}
