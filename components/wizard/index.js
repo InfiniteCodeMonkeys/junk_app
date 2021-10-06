@@ -9,6 +9,7 @@ import Shipping from "./Shipping";
 import { apiRequest } from "utils/util";
 import { createOrder } from "utils/db";
 import { loadStripe } from "@stripe/stripe-js";
+import * as fbq from "utils/pixel";
 
 let stripe;
 // Load the Stripe script
@@ -77,6 +78,9 @@ function index() {
         bestOption: getOptions[0],
         id: uid,
       });
+
+      //Send Pixel Info
+      fbq.event("Purchase", { currency: "USD", value: shippingCost });
 
       const session = await apiRequest("create-stripe-checkout", "POST", {
         shippingCost,

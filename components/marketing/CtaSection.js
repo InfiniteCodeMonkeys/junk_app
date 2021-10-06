@@ -7,7 +7,7 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { createOrder } from "utils/db";
 import router from "next/router";
-
+import * as fbq from "utils/pixel";
 const useStyles = makeStyles((theme) => ({
   button: {
     borderRadius: "0px",
@@ -48,6 +48,10 @@ function CtaSection(props) {
   const handleSubmit = () => {
     // Write to Firestore
     createOrder(props.uid, data).then(() => {
+      fbq.event("SignUp", {
+        contactName: data.contactName,
+        contactEmail: data.contactEmail,
+      });
       // Router . push with query strings
       router.push({
         pathname: "/wizard",

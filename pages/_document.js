@@ -1,6 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
+import { FB_PIXEL_ID } from "utils/pixel";
 //import * as snippet from "@segment/snippet";
 
 // const {
@@ -63,6 +64,14 @@ export default class MyDocument extends Document {
             httpEquiv="Content-Type"
             content="text/html; charset=ISO-8859-1"
           />
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+            />
+          </noscript>
         </Head>
         <body>
           <Main />
