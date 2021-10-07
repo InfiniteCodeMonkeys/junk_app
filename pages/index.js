@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "utils/firebase";
 import Head from "next/head";
 import Hero from "../components/marketing/Hero";
+import TestimonialsSection from "components/marketing/TestimonialsSection";
 import How from "components/marketing/How";
 import CtaSection from "components/marketing/CtaSection";
 
@@ -50,19 +51,28 @@ export default function Home() {
           subTitle="Easily recycle unwanted electronics in 5 mins or less"
           //subTitle="We help you sustainably recycle old chargers, earphones, cameras, phones, laptops, and batteries."
         />
+
         <How />
-        <CtaSection
-          bg="#f8f8f8"
-          textColor="#0e697b"
-          size="medium"
-          bgImage=""
-          bgImageOpacity={1}
-          title="Ready to clean out that junk drawer?"
-          subtitle="Just pay the shipping to our warehouse and we'll sort & recycle your items for you to help save you hours of time."
-          buttonText="Get Started"
-          buttonColor="secondary"
-          uid={uid}
-        />
+        <div style={{ backgroundColor: "#f8f8f8", marginBottom: 40 }}>
+          <CtaSection
+            bg="#f8f8f8"
+            textColor="#0e697b"
+            size="medium"
+            bgImage=""
+            bgImageOpacity={1}
+            title="Ready to clean out that junk drawer?"
+            subtitle="Just pay the shipping to our warehouse and we'll sort & recycle your items for you to help save you hours of time."
+            buttonText="Get Started"
+            buttonColor="secondary"
+            uid={uid}
+          />
+          <TestimonialsSection
+            title="Some Testimonials"
+            subtitle="From people like you."
+            textColor="#0e697b"
+            bgColor="#f8f8f8"
+          />
+        </div>
       </main>
     </div>
   );
