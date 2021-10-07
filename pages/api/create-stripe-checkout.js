@@ -68,6 +68,7 @@ export default requireAuth(async (req, res) => {
       await updateOrder(user.uid, {
         paymentIntent: session.payment_intent,
         stripeCustomerId,
+        status: "Entered Checkout",
       });
       // Return success response
       res.send({ status: "success", data: session });
