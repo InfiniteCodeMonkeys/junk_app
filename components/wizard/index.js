@@ -80,7 +80,7 @@ function index() {
       });
 
       //Send Pixel Info
-      fbq.event("Purchase", { currency: "USD", value: shippingCost });
+      fbq.event("Purchase", { currency: "USD", value: shippingCost }); //this does not appear to be working
 
       const session = await apiRequest("create-stripe-checkout", "POST", {
         shippingCost,
