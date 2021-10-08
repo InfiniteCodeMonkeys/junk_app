@@ -31,7 +31,7 @@ export function createOrder(uid, data) {
 /**** CONTACTS ****/
 export function createContact(uid, data) {
   return firestore
-    .collection("contact")
+    .collection("contacts")
     .doc(uid)
     .set({
       ...data,
