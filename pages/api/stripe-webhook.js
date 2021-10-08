@@ -106,22 +106,23 @@ export default async (req, res) => {
         //Get the email and recovery URL
         // When a Checkout Session expires, the buyer's email is not returned in
         // the webhook payload unless they give consent for promotional content
-        const email = object.customer_details?.email;
-        const recoveryUrl = object.after_expiration?.recovery?.url;
+        // const email = object.customer_details?.email;
+        // const recoveryUrl = object.after_expiration?.recovery?.url;
 
-        // Do nothing if the Checkout Session has no email or recovery URL
-        if (!email || !recoveryUrl) {
-          return response.status(200);
-        }
+        // // Do nothing if the Checkout Session has no email or recovery URL
+        // if (!email || !recoveryUrl) {
+        //   return response.status(200);
+        // }
 
-        // Check if the buyer has consented to promotional emails and
-        // avoid spamming people who abandon Checkout multiple times
-        if (
-          session.consent?.promotions === "opt_in" &&
-          !hasSentRecoveryEmailToCustomer(email)
-        ) {
-          sendRecoveryEmail(email, recoveryUrl);
-        }
+        // // Check if the buyer has consented to promotional emails and
+        // // avoid spamming people who abandon Checkout multiple times
+        // if (
+        //   session.consent?.promotions === "opt_in" &&
+        //   !hasSentRecoveryEmailToCustomer(email)
+        // ) {
+        //   sendRecoveryEmail(email, recoveryUrl);
+        // }
+        console.log("uh oh");
 
         break;
     }
