@@ -56,6 +56,14 @@ export default requireAuth(async (req, res) => {
           },
         ],
         mode: "payment",
+        consent_collection: {
+          promotions: "auto",
+        },
+        after_expiration: {
+          recovery: {
+            enabled: true,
+          },
+        },
         // Uncomment to allow user to enter a promotional code
         //allow_promotion_codes: true,
 

@@ -77,6 +77,7 @@ function index() {
         shippingCost,
         bestOption: getOptions[0],
         id: uid,
+        status: "Form Complete/ Checkout Not Confirmed",
       });
 
       //Send Pixel Info

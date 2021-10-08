@@ -28,6 +28,17 @@ export function createOrder(uid, data) {
     });
 }
 
+/**** CONTACTS ****/
+export function createContact(uid, data) {
+  return firestore
+    .collection("contact")
+    .doc(uid)
+    .set({
+      ...data,
+      createdAt: serverTimestamp(),
+    });
+}
+
 export function updateOrder(id, data) {
   return firestore.collection("orders").doc(id).update(data);
 }

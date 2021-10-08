@@ -133,7 +133,7 @@ function Footer(props) {
             className={`${classes.item} ${classes.right} ${classes.social} ${classes.smallLinks}`}
           >
             <a
-              href="https://twitter.com/junkdrawr"
+              href="https://twitter.com/put_junk_in_box"
               target="_blank"
               rel="noopener"
               className={classes.link}
@@ -141,7 +141,7 @@ function Footer(props) {
               <TwitterIcon fontSize="small" />
             </a>
             <a
-              href="https://facebook.com/junkdrawr"
+              href="https://facebook.com/Junk-Drawr-104365125356071"
               target="_blank"
               rel="noopener"
               className={classes.link}
