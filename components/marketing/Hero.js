@@ -56,7 +56,9 @@ function MarketingHero(props) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/ewaste_cropped.jpg")`,
+          background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
+          // backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
         <Typography variant="h1" className={classes.title}>
