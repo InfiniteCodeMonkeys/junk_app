@@ -148,6 +148,9 @@ function Navbar(props) {
 
               <div className={classes.endGroup}>
                 <div style={{ display: "flex", marginTop: 10 }}>
+                  {/* <Typography className={classes.navLinks}>
+                    <Link href="/business">FOR BUSINESS</Link>
+                  </Typography> */}
                   <Typography className={classes.navLinks}>
                     <Link href="/about">ABOUT US</Link>
                   </Typography>
@@ -211,6 +214,11 @@ function Navbar(props) {
               <ListItemText>Home</ListItemText>
             </ListItem>
           </Link>
+          {/* <Link href="/business">
+            <ListItem button={true} component="a">
+              <ListItemText>For Business</ListItemText>
+            </ListItem>
+          </Link> */}
           <Link href="/about">
             <ListItem button={true} component="a">
               <ListItemText>About Us</ListItemText>

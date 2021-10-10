@@ -90,28 +90,30 @@ function CtaSection(props) {
             className="text-center"
           />
           <div style={{ display: "flex", margin: 20 }}>
-            <TextField
-              variant="filled"
-              type="text"
-              label="Name"
-              name="contactName"
-              value={data.contactName}
-              onChange={handleAddress}
-              required
-              style={{ marginRight: 40 }}
-            />
-
-            <TextField
-              variant="filled"
-              type="text"
-              label="Best Email"
-              name="contactEmail"
-              value={data.contactEmail}
-              onChange={handleAddress}
-              required
-            />
+            <div style={{ backgroundColor: "#fff", marginRight: 40 }}>
+              <TextField
+                variant="outlined"
+                type="text"
+                label="Name"
+                name="contactName"
+                value={data.contactName}
+                onChange={handleAddress}
+                required
+                color="#fff"
+              />
+            </div>
+            <div style={{ backgroundColor: "#fff" }}>
+              <TextField
+                variant="outlined"
+                type="text"
+                label="Best Email"
+                name="contactEmail"
+                value={data.contactEmail}
+                onChange={handleAddress}
+                required
+              />
+            </div>
           </div>
-
           <Button
             variant="contained"
             color="primary"
