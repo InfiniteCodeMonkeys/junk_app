@@ -1,6 +1,6 @@
 //get size and dimensions
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Section from "components/primitives/Section";
 import SectionHeader from "components/primitives/SectionHeader";
 import Grid from "@material-ui/core/Grid";

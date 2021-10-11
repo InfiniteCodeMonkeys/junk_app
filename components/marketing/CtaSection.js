@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import Section from "components/primitives/Section";
 import Container from "@material-ui/core/Container";
 import SectionHeader from "components/primitives/SectionHeader";
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function CtaSection(props) {
   const classes = useStyles();
+  const { handleSubmit } = useForm();
   const [data, setData] = useState({
     contactName: "",
     contactEmail: "",
@@ -46,7 +48,7 @@ function CtaSection(props) {
     });
   };
 
-  const handleSubmit = () => {
+  const onSubmit = () => {
     // Write to Firestore
     createContact(props.uid, data).then(() => {
       fbq.event("SignUp", {
@@ -89,40 +91,42 @@ function CtaSection(props) {
             //spaced={false}
             className="text-center"
           />
-          <div style={{ display: "flex", margin: 20 }}>
-            <div style={{ backgroundColor: "#fff", marginRight: 40 }}>
-              <TextField
-                variant="outlined"
-                type="text"
-                label="Name"
-                name="contactName"
-                value={data.contactName}
-                onChange={handleAddress}
-                required
-                color="#fff"
-              />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div style={{ display: "flex", margin: 20 }}>
+              <div style={{ backgroundColor: "#fff", marginRight: 40 }}>
+                <TextField
+                  variant="outlined"
+                  type="text"
+                  label="Name"
+                  name="contactName"
+                  value={data.contactName}
+                  onChange={handleAddress}
+                  required
+                  color="#fff"
+                />
+              </div>
+              <div style={{ backgroundColor: "#fff" }}>
+                <TextField
+                  variant="outlined"
+                  type="text"
+                  label="Best Email"
+                  name="contactEmail"
+                  value={data.contactEmail}
+                  onChange={handleAddress}
+                  required
+                />
+              </div>
             </div>
-            <div style={{ backgroundColor: "#fff" }}>
-              <TextField
-                variant="outlined"
-                type="text"
-                label="Best Email"
-                name="contactEmail"
-                value={data.contactEmail}
-                onChange={handleAddress}
-                required
-              />
-            </div>
-          </div>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            size="large"
-            onClick={handleSubmit}
-          >
-            {props.buttonText}
-          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              size="large"
+              type="submit"
+            >
+              {props.buttonText}
+            </Button>
+          </form>
         </Container>
       </div>
     </Section>
