@@ -71,7 +71,10 @@ function index({ data, setData }) {
                     }
                     label="Cables & Wires"
                   />
-
+                </FormGroup>
+              </div>
+              <div>
+                <FormGroup>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -82,10 +85,6 @@ function index({ data, setData }) {
                     }
                     label="Batteries"
                   />
-                </FormGroup>
-              </div>
-              <div>
-                <FormGroup>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -96,7 +95,7 @@ function index({ data, setData }) {
                     }
                     label="Ink Cartridges"
                   />
-                  <FormControlLabel
+                  {/* <FormControlLabel
                     control={
                       <Checkbox
                         checked={checked.clothing}
@@ -116,7 +115,7 @@ function index({ data, setData }) {
                       />
                     }
                     label="Actual Junk"
-                  />
+                  /> */}
                 </FormGroup>
               </div>
             </div>
