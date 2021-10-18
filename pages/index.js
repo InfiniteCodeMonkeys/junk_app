@@ -42,6 +42,10 @@ export default function Home() {
           content="Junk Drawr is an electronic waste processing company. We aim to recycle the tons of electronic junk lurking in people's junk drawers."
         />
         <meta property="og:image" content="/images/box.png" />
+        <meta
+          name="facebook-domain-verification"
+          content="cdbmziam437252wilejtjruotkg6ju"
+        />
         <link rel="icon" href="/images/box.png" />
       </Head>
 
