@@ -30,9 +30,8 @@ function NewSolutionsSection() {
               </span>
             </Typography>
             <Typography align="left" style={{ color: "#3d3d3d", fontSize: 22 }}>
-              Grab that old ecommerce box you've got lying around and give me
-              your e-waste, hard to recycle items, and junk you just don't know
-              how to deal with.
+              Grab that old ecommerce box you've got lying around and send us
+              your electronic waste!
             </Typography>
           </Grid>
 
