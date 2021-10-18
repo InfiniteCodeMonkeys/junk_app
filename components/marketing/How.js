@@ -1,6 +1,7 @@
 import { Typography, Container, Grid } from "@material-ui/core";
 import Image from "next/image";
 import React from "react";
+import { Link as MuiLink } from "@material-ui/core";
 
 function NewSolutionsSection() {
   return (
@@ -69,8 +70,12 @@ function NewSolutionsSection() {
               </span>
             </Typography>
             <Typography align="left" style={{ color: "#3d3d3d", fontSize: 22 }}>
-              We'll make sure everything gets appropriately donated, upcycled,
-              and recycled at responsible recycling centers in the U.S.
+              We'll make sure everything gets appropriately recycled at{" "}
+              <MuiLink>
+                {" "}
+                <a href="www.e-stewards.org">e-stewards</a>
+              </MuiLink>{" "}
+              certified recycling centers across the U.S.
             </Typography>
           </Grid>
 
