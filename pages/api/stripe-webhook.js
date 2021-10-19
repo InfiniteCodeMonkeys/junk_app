@@ -1,7 +1,7 @@
 const getRawBody = require("raw-body");
 const { updateOrderByCustomerId, getOrderByCustomerId } = require("./_db.js");
 const stripe = require("./_stripe.js");
-var shippo = require("shippo")(process.env.SHIPPO_API_KEY);
+const shippo = require("shippo")(process.env.SHIPPO_API_KEY);
 const sgMail = require("@sendgrid/mail");
 
 const TEMPLATE_USER = "d-f09a8d85a0ee4517b93fe17ed08600f7";
@@ -55,14 +55,14 @@ export default async (req, res) => {
             label_file_type: "PDF",
             async: false,
           },
-          async function (err, transaction) {
+          function (err, transaction) {
             // asynchronous callback
 
             try {
               console.log(transaction);
 
               // Update the current user
-              await updateOrderByCustomerId(object.customer, {
+              updateOrderByCustomerId(object.customer, {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL
@@ -95,6 +95,7 @@ export default async (req, res) => {
                 sgMail.send(msg);
               });
             } catch {
+              console.log(err);
               return res.status(400).send({ status: "FAILED", data: err });
             }
           }
