@@ -46,7 +46,7 @@ async function getOrderByCustomerId(customerId) {
 
 // Update a user by their stripeCustomerId
 async function updateOrderByCustomerId(customerId, data) {
-  return await getOrderByCustomerId(customerId).then((order) => {
+  return await getOrderByCustomerId(customerId).then(async (order) => {
     return await updateOrder(order.id, data);
   });
 }
