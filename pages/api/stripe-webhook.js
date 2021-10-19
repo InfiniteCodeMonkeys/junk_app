@@ -55,15 +55,14 @@ export default async (req, res) => {
             label_file_type: "PDF",
             async: false,
           })
-          .then(function (err, transaction) {
+          .then(function async(err, transaction) {
             // asynchronous callback
-            console.log(transaction);
-            console.log(err);
+
             try {
               console.log(transaction);
-
+              console.log(object.customer);
               // Update the current user
-              updateOrderByCustomerId(object.customer, {
+              await updateOrderByCustomerId(object.customer, {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL
