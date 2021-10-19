@@ -27,16 +27,16 @@ function updateUser(uid, data) {
 /**** ORDERS ****/
 
 // Get order by uid
-function getOrder(uid) {
-  return firestore.collection("orders").doc(uid).get().then(format);
+async function getOrder(uid) {
+  return await firestore.collection("orders").doc(uid).get().then(format);
 }
 
-function updateOrder(uid, data) {
-  return firestore.collection("orders").doc(uid).update(data);
+async function updateOrder(uid, data) {
+  return await firestore.collection("orders").doc(uid).update(data);
 }
 
-function getOrderByCustomerId(customerId) {
-  return firestore
+async function getOrderByCustomerId(customerId) {
+  return await firestore
     .collection("orders")
     .where("stripeCustomerId", "==", customerId)
     .get()
@@ -45,8 +45,8 @@ function getOrderByCustomerId(customerId) {
 }
 
 // Get user by stripeCustomerId
-function getUserByCustomerId(customerId) {
-  return firestore
+async function getUserByCustomerId(customerId) {
+  return await firestore
     .collection("users")
     .where("stripeCustomerId", "==", customerId)
     .get()
@@ -60,13 +60,13 @@ function updateUser(uid, data) {
 }
 
 // Update a user by their stripeCustomerId
-function updateOrderByCustomerId(customerId, data) {
-  return getOrderByCustomerId(customerId).then((order) => {
-    return updateOrder(order.id, data);
+async function updateOrderByCustomerId(customerId, data) {
+  return await getOrderByCustomerId(customerId).then((order) => {
+    return await updateOrder(order.id, data);
   });
 }
 
-function updateUserByCustomerId(customerId, data) {
+async function updateUserByCustomerId(customerId, data) {
   return getUserByCustomerId(customerId).then((user) => {
     return updateUser(user.id, data);
   });
