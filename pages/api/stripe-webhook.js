@@ -34,73 +34,72 @@ export default async (req, res) => {
 
     // Get the object from stripeEvent
     const object = await stripeEvent.data.object;
-    console.log(object.customer);
+    console.log("First Customer: " + object.customer);
 
     switch (stripeEvent.type) {
       case "checkout.session.completed":
         //Get the order
 
-        //const order = await getOrderByCustomerId("cus_KRClPHniSNe72a"); //
+        //const order = await getOrderByCustomerId("cus_KRGOszzNSFSZyl"); //
         const order = await getOrderByCustomerId(object.customer);
 
         // Get the rate
         const rate = order.bestOption;
 
-        console.log(rate.object_id);
+        console.log("Rate: " + rate.object_id);
 
         // Buy Shipping Label
-        shippo.transaction
-          .create({
-            rate: rate.object_id,
-            label_file_type: "PDF",
-            async: false,
-          })
-          .then(function (err, transaction) {
-            // asynchronous callback
+        const response = await shippo.transaction.create({
+          rate: rate.object_id,
+          label_file_type: "PDF",
+          async: false,
+        });
 
-            try {
-              console.log(transaction);
-              console.log(object.customer);
-              // Update the current user
-              updateOrderByCustomerId(object.customer, {
-                // Add payment success status
-                status: "SUCCESS/PAID",
-                // Add shipping label URL
-                shippingLabel: transaction.label_url,
-                // Add Tracking URL
-                trackingURL: transaction.tracking_url_provider,
-                parcelID: transaction.parcel,
-                trackingNumber: transaction.tracking_number,
-              })
-                .then(() => {
-                  // Use Send Grid to Send Email
-                  const msg = {
-                    to: order.address.contactEmail,
-                    from: "hello@junk-drawr.com",
-                    template_id: TEMPLATE_USER,
-                    dynamic_template_data: {
-                      shippingURL: transaction.label_url,
-                      trackingURL: transaction.tracking_url_provider,
-                    },
-                  };
-                  const adminMsg = {
-                    to: "mike@junk-drawr.com",
-                    from: "hello@junk-drawr.com",
-                    template_id: TEMPLATE_ADMIN,
-                    dynamic_template_data: {
-                      shippingURL: transaction.label_url,
-                      trackingURL: transaction.tracking_url_provider,
-                    },
-                  };
-                  sgMail.send(adminMsg);
-                  sgMail.send(msg);
-                })
-                .finally(res.send({ status: "success" }));
-            } catch {
-              console.log(err);
-              return res.status(400).send({ status: "FAILED", data: err });
-            }
-          });
+        if (response.label_url != undefined) {
+          const transaction = response;
+          console.log("Transaction: " + JSON.stringify(transaction));
+          console.log("Customer: " + object.customer);
+          // Update the current user
+          await updateOrderByCustomerId(object.customer, {
+            // Add payment success status
+            status: "SUCCESS/PAID",
+            // Add shipping label URL
+            shippingLabel: transaction.label_url,
+            // Add Tracking URL
+            trackingURL: transaction.tracking_url_provider,
+            parcelID: transaction.parcel,
+            trackingNumber: transaction.tracking_number,
+          })
+            .then(() => {
+              // Use Send Grid to Send Email
+              const msg = {
+                to: order.address.contactEmail,
+                from: "hello@junk-drawr.com",
+                template_id: TEMPLATE_USER,
+                dynamic_template_data: {
+                  shippingURL: transaction.label_url,
+                  trackingURL: transaction.tracking_url_provider,
+                },
+              };
+              console.log(msg);
+              const adminMsg = {
+                to: "mike@junk-drawr.com",
+                from: "hello@junk-drawr.com",
+                template_id: TEMPLATE_ADMIN,
+                dynamic_template_data: {
+                  shippingURL: transaction.label_url,
+                  trackingURL: transaction.tracking_url_provider,
+                },
+              };
+              sgMail.send(adminMsg);
+              sgMail.send(msg);
+            })
+            .finally(res.send({ status: "success" }));
+        } else {
+          const err = response;
+          console.log("Error: " + err);
+          return res.status(400).send({ status: "FAILED", data: err });
+        }
 
         break;
 

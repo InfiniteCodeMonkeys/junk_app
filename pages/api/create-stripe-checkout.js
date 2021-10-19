@@ -29,10 +29,6 @@ export default requireAuth(async (req, res) => {
     if (!stripeCustomerId) {
       const customer = await stripe.customers.create({ email: email });
 
-      await updateOrder(user.uid, {
-        stripeCustomerId: customer.id,
-      });
-
       stripeCustomerId = customer.id;
     }
 
@@ -77,10 +73,9 @@ export default requireAuth(async (req, res) => {
         paymentIntent: session.payment_intent,
         stripeCustomerId,
         status: "Entered Checkout",
-      }).then(
-        // Return success response
-        res.send({ status: "success", data: session })
-      );
+      });
+      // Return success response
+      res.send({ status: "success", data: session });
     };
 
     createSession(total);
