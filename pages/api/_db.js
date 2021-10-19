@@ -24,6 +24,12 @@ function updateUser(uid, data) {
   return firestore.collection("users").doc(uid).update(data);
 }
 
+function updateUserByCustomerId(customerId, data) {
+  return getUserByCustomerId(customerId).then((user) => {
+    return updateUser(user.id, data);
+  });
+}
+
 /**** ORDERS ****/
 
 // Get order by uid
@@ -44,33 +50,12 @@ function getOrderByCustomerId(customerId) {
     .then((docs) => (docs ? docs[0] : null)); // Get first result
 }
 
-// // Get user by stripeCustomerId
-// function getUserByCustomerId(customerId) {
-//   return firestore
-//     .collection("users")
-//     .where("stripeCustomerId", "==", customerId)
-//     .get()
-//     .then(format)
-//     .then((docs) => (docs ? docs[0] : null)); // Get first result
-// }
-
-// // Update an existing user
-// function updateUser(uid, data) {
-//   return firestore.collection("users").doc(uid).update(data);
-// }
-
 // Update a user by their stripeCustomerId
 function updateOrderByCustomerId(customerId, data) {
   return getOrderByCustomerId(customerId).then((order) => {
     return updateOrder(order.id, data);
   });
 }
-
-// function updateUserByCustomerId(customerId, data) {
-//   return getUserByCustomerId(customerId).then((user) => {
-//     return updateUser(user.id, data);
-//   });
-// }
 
 /**** HELPERS ****/
 
