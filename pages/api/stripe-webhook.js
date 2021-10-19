@@ -49,20 +49,20 @@ export default async (req, res) => {
         console.log(rate.object_id);
 
         // Buy Shipping Label
-        await shippo.transaction.create(
+        shippo.transaction.create(
           {
             rate: rate.object_id,
             label_file_type: "PDF",
             async: false,
           },
-          async function (err, transaction) {
+          function (err, transaction) {
             // asynchronous callback
 
             try {
               console.log(transaction);
 
               // Update the current user
-              await updateOrderByCustomerId(object.customer, {
+              updateOrderByCustomerId(object.customer, {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL

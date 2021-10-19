@@ -27,16 +27,16 @@ function updateUser(uid, data) {
 /**** ORDERS ****/
 
 // Get order by uid
-async function getOrder(uid) {
-  return await firestore.collection("orders").doc(uid).get().then(format);
+function getOrder(uid) {
+  return firestore.collection("orders").doc(uid).get().then(format);
 }
 
-async function updateOrder(uid, data) {
-  return await firestore.collection("orders").doc(uid).update(data);
+function updateOrder(uid, data) {
+  return firestore.collection("orders").doc(uid).update(data);
 }
 
-async function getOrderByCustomerId(customerId) {
-  return await firestore
+function getOrderByCustomerId(customerId) {
+  return firestore
     .collection("orders")
     .where("stripeCustomerId", "==", customerId)
     .get()
@@ -44,18 +44,33 @@ async function getOrderByCustomerId(customerId) {
     .then((docs) => (docs ? docs[0] : null)); // Get first result
 }
 
+// // Get user by stripeCustomerId
+// function getUserByCustomerId(customerId) {
+//   return firestore
+//     .collection("users")
+//     .where("stripeCustomerId", "==", customerId)
+//     .get()
+//     .then(format)
+//     .then((docs) => (docs ? docs[0] : null)); // Get first result
+// }
+
+// // Update an existing user
+// function updateUser(uid, data) {
+//   return firestore.collection("users").doc(uid).update(data);
+// }
+
 // Update a user by their stripeCustomerId
-async function updateOrderByCustomerId(customerId, data) {
-  return await getOrderByCustomerId(customerId).then(async (order) => {
-    return await updateOrder(order.id, data);
+function updateOrderByCustomerId(customerId, data) {
+  return getOrderByCustomerId(customerId).then((order) => {
+    return updateOrder(order.id, data);
   });
 }
 
-async function updateUserByCustomerId(customerId, data) {
-  return getUserByCustomerId(customerId).then((user) => {
-    return updateUser(user.id, data);
-  });
-}
+// function updateUserByCustomerId(customerId, data) {
+//   return getUserByCustomerId(customerId).then((user) => {
+//     return updateUser(user.id, data);
+//   });
+// }
 
 /**** HELPERS ****/
 
