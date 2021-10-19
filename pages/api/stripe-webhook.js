@@ -40,8 +40,8 @@ export default async (req, res) => {
       case "checkout.session.completed":
         //Get the order
 
-        // const order = await getOrderByCustomerId(cus_KR1PunGyyoBhbB); //
-        const order = await getOrderByCustomerId(object.customer);
+        const order = await getOrderByCustomerId("cus_KRClPHniSNe72a"); //
+        //const order = await getOrderByCustomerId(object.customer);
 
         // Get the rate
         const rate = order.bestOption;
@@ -49,13 +49,13 @@ export default async (req, res) => {
         console.log(rate.object_id);
 
         // Buy Shipping Label
-        shippo.transaction.create(
-          {
+        shippo.transaction
+          .create({
             rate: rate.object_id,
             label_file_type: "PDF",
             async: false,
-          },
-          function (err, transaction) {
+          })
+          .then(function (err, transaction) {
             // asynchronous callback
             console.log(transaction);
             console.log(err);
@@ -63,7 +63,7 @@ export default async (req, res) => {
               console.log(transaction);
 
               // Update the current user
-              updateOrderByCustomerId(object.customer, {
+              updateOrderByCustomerId("cus_KRClPHniSNe72a", {
                 // Add payment success status
                 status: "SUCCESS/PAID",
                 // Add shipping label URL
@@ -72,35 +72,36 @@ export default async (req, res) => {
                 trackingURL: transaction.tracking_url_provider,
                 parcelID: transaction.parcel,
                 trackingNumber: transaction.tracking_number,
-              }).then(() => {
-                // Use Send Grid to Send Email
-                const msg = {
-                  to: order.address.contactEmail,
-                  from: "hello@junk-drawr.com",
-                  template_id: TEMPLATE_USER,
-                  dynamic_template_data: {
-                    shippingURL: transaction.label_url,
-                    trackingURL: transaction.tracking_url_provider,
-                  },
-                };
-                const adminMsg = {
-                  to: "mike@junk-drawr.com",
-                  from: "hello@junk-drawr.com",
-                  template_id: TEMPLATE_ADMIN,
-                  dynamic_template_data: {
-                    shippingURL: transaction.label_url,
-                    trackingURL: transaction.tracking_url_provider,
-                  },
-                };
-                sgMail.send(adminMsg);
-                sgMail.send(msg);
-              });
+              })
+                .then(() => {
+                  // Use Send Grid to Send Email
+                  const msg = {
+                    to: order.address.contactEmail,
+                    from: "hello@junk-drawr.com",
+                    template_id: TEMPLATE_USER,
+                    dynamic_template_data: {
+                      shippingURL: transaction.label_url,
+                      trackingURL: transaction.tracking_url_provider,
+                    },
+                  };
+                  const adminMsg = {
+                    to: "mike@junk-drawr.com",
+                    from: "hello@junk-drawr.com",
+                    template_id: TEMPLATE_ADMIN,
+                    dynamic_template_data: {
+                      shippingURL: transaction.label_url,
+                      trackingURL: transaction.tracking_url_provider,
+                    },
+                  };
+                  sgMail.send(adminMsg);
+                  sgMail.send(msg);
+                })
+                .finally(res.send({ status: "success" }));
             } catch {
               console.log(err);
               return res.status(400).send({ status: "FAILED", data: err });
             }
-          }
-        );
+          });
 
         break;
 
@@ -130,7 +131,7 @@ export default async (req, res) => {
     }
 
     // Send success response
-    res.send({ status: "success" });
+    // res.send({ status: "success" });
   } catch (error) {
     console.log("stripe webhook error", error);
 
