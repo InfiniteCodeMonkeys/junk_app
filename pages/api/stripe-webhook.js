@@ -60,7 +60,7 @@ export default async (req, res) => {
           console.log("Transaction: " + JSON.stringify(transaction));
           console.log("Customer: " + object.customer);
           // Update the current user
-          await updateOrderByCustomerId(object.customer, {
+          updateOrderByCustomerId(object.customer, {
             // Add payment success status
             status: "SUCCESS/PAID",
             // Add shipping label URL
