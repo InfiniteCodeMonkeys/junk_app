@@ -1,5 +1,5 @@
 const getRawBody = require("raw-body");
-const { updateOrderByCustomerId, getOrderByCustomerId } = require("./_db.js");
+const { updateOrder, getOrderByCustomerId } = require("./_db.js");
 const stripe = require("./_stripe.js");
 const shippo = require("shippo")(process.env.SHIPPO_API_KEY);
 const sgMail = require("@sendgrid/mail");
@@ -60,7 +60,7 @@ export default async (req, res) => {
           console.log("Transaction: " + JSON.stringify(transaction));
           console.log("Customer: " + object.customer);
           // Update the current user
-          updateOrderByCustomerId(object.customer, {
+          await updateOrder(order.id, {
             // Add payment success status
             status: "SUCCESS/PAID",
             // Add shipping label URL
