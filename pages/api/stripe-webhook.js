@@ -55,9 +55,10 @@ export default async (req, res) => {
             label_file_type: "PDF",
             async: false,
           },
-          function (transaction, err) {
+          function (err, transaction) {
             // asynchronous callback
-
+            console.log(transaction);
+            console.log(err);
             try {
               console.log(transaction);
 
