@@ -40,7 +40,7 @@ export default async (req, res) => {
       case "checkout.session.completed":
         //Get the order
 
-        // const order = await getOrderByCustomerId(object.customer); //
+        // const order = await getOrderByCustomerId(cus_KR1PunGyyoBhbB); //
         const order = await getOrderByCustomerId(object.customer);
 
         // Get the rate
