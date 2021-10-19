@@ -44,15 +44,15 @@ async function getOrderByCustomerId(customerId) {
     .then((docs) => (docs ? docs[0] : null)); // Get first result
 }
 
-// Get user by stripeCustomerId
-async function getUserByCustomerId(customerId) {
-  return await firestore
-    .collection("users")
-    .where("stripeCustomerId", "==", customerId)
-    .get()
-    .then(format)
-    .then((docs) => (docs ? docs[0] : null)); // Get first result
-}
+// // Get user by stripeCustomerId
+// async function getUserByCustomerId(customerId) {
+//   return await firestore
+//     .collection("users")
+//     .where("stripeCustomerId", "==", customerId)
+//     .get()
+//     .then(format)
+//     .then((docs) => (docs ? docs[0] : null)); // Get first result
+// }
 
 // Update an existing user
 function updateUser(uid, data) {
