@@ -58,7 +58,7 @@ export default async (req, res) => {
         if (response.label_url != undefined) {
           const transaction = response;
           console.log("Transaction: " + JSON.stringify(transaction));
-          console.log("Customer: " + object.customer);
+          // console.log("Customer: " + object.customer);
           // Update the current user
           await updateOrder(order.id, {
             // Add payment success status
