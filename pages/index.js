@@ -41,12 +41,12 @@ export default function Home() {
           property="og:description"
           content="Junk Drawr is an electronic waste processing company. We aim to recycle the tons of electronic junk lurking in people's junk drawers."
         />
-        <meta property="og:image" content="/images/box.png" />
+        <meta property="og:image" content="/images/drawr_icon.svg" />
         <meta
           name="facebook-domain-verification"
           content="cdbmziam437252wilejtjruotkg6ju"
         />
-        <link rel="icon" href="/images/box.png" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
       </Head>
 
       <main>
@@ -60,7 +60,7 @@ export default function Home() {
         <div style={{ backgroundColor: "#f8f8f8", marginBottom: 40 }}>
           <CtaSection
             bg="#f8f8f8"
-            textColor="#0e697b"
+            textColor="#63365c"
             size="medium"
             bgImage=""
             bgImageOpacity={1}
@@ -73,7 +73,7 @@ export default function Home() {
           <TestimonialsSection
             title="Some Testimonials"
             subtitle="From people like you."
-            textColor="#0e697b"
+            textColor="#63365c"
             bgColor="#f8f8f8"
           />
         </div>

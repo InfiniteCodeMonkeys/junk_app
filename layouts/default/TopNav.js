@@ -168,7 +168,6 @@ function Navbar(props) {
                 <div style={{ marginTop: 5 }}>
                   <Link href="/wizard" passHref={true}>
                     <Button
-                      color="inherit"
                       component="a"
                       variant="contained"
                       className={classes.signUpButton}

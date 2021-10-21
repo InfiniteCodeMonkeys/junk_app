@@ -9,7 +9,7 @@ export default function About() {
     <>
       <Head>
         <title>Junk Drawr | About</title>
-        <link rel="icon" href="/images/box.png" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
         <meta
           name="description"
           content="Junk Drawr is an electronic waste processing company. Here's why we got into business and what we're trying to do."

@@ -9,7 +9,7 @@ function WizardPage(props) {
     <>
       <Head>
         <title>Junk Drawr | Wizard</title>
-        <link rel="icon" href="/images/box.png" alt="Junk Drawr Logo" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
         <meta
           name="description"
           content="Junk Drawr is an electronic waste processing company. Let's mail some junk."

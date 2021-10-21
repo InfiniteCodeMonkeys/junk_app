@@ -7,7 +7,7 @@ function ContactPage(props) {
     <>
       <Head>
         <title>Junk Drawr | Contact</title>
-        <link rel="icon" href="/images/box.png" alt="Junk Drawr Logo" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
         <meta name="description" content="Contact the folks at Junk Drawr." />
       </Head>
       <ContactSection

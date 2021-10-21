@@ -38,7 +38,7 @@ function Success() {
     <>
       <Head>
         <title>Junk Drawr | Success</title>
-        <link rel="icon" href="/images/box.png" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
         <meta
           name="description"
           content="Junk Drawr is an electronic waste processing company. This is the success page for customers."

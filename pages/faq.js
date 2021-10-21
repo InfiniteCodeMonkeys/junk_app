@@ -34,7 +34,7 @@ function FaqPage(props) {
     <>
       <Head>
         <title>Junk Drawr | FAQ</title>
-        <link rel="icon" href="/images/box.png" alt="Junk Drawr Logo" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
         <meta
           name="description"
           content="Junk Drawr is an electronic waste processing company. Let's answer some of your burning questions."

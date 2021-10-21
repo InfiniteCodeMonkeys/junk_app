@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "1px",
     fontSize: "14px",
     fontWeight: 500,
-    backgroundColor: "#a1c181",
+    backgroundColor: "#3A6336",
     "&:hover": {
-      backgroundColor: "#a1c181",
+      backgroundColor: "#3A6336",
     },
   },
 

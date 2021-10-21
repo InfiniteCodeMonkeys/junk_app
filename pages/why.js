@@ -32,7 +32,7 @@ export default function WhyPage() {
     <>
       <Head>
         <title>Junk Drawr | Why Recycle</title>
-        <link rel="icon" href="/images/box.png" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
         <meta
           name="description"
           content="Junk Drawr is an electronic waste processing company. Why should you recycle your e-waste?"

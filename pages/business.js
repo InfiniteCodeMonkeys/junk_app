@@ -39,8 +39,8 @@ function Business() {
           property="og:description"
           content="Junk Drawr is an electronic waste processing company. We aim to recycle the tons of electronic junk lurking in people's junk drawers."
         />
-        <meta property="og:image" content="/images/box.png" />
-        <link rel="icon" href="/images/box.png" />
+        <meta property="og:image" content="/images/drawr_icon.svg" />
+        <link rel="icon" href="/images/drawr_icon.svg" />
       </Head>
 
       <main>

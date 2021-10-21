@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import TopNav from "./TopNav";
 
-const Logo = "/images/junk_logo.png";
+const Logo = "/images/drawr_logo.svg";
 
 const DefaultLayout = ({ children }) => {
   return (
