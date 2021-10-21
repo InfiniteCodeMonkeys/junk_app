@@ -7,16 +7,16 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: 20,
-    fontSize: 48,
+    fontSize: 72,
     fontWeight: 800,
     // color: "#fff",
     zIndex: 1,
     textAlign: "center",
   },
   subTitle: {
-    marginBottom: 20,
-    width: "50%",
-    fontSize: 24,
+    marginBottom: 40,
+    width: "90%",
+    fontSize: 32,
     fontWeight: 500,
     //color: "#fff",
     textAlign: "center",

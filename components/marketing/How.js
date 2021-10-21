@@ -58,8 +58,17 @@ function NewSolutionsSection() {
             </Typography>
             <Typography align="left" style={{ color: "#3d3d3d", fontSize: 22 }}>
               Tell us about the box, follow some simple rules to make everything
-              safe, pay for your shipping label (around $10) and then we'll
-              email it to you along with some product discounts.
+              safe, pay for your shipping label (
+              <span style={{ textDecoration: "underline" }}>around $10</span>){" "}
+              and then we'll email it to you along with some product discounts.
+            </Typography>
+            <Typography
+              align="left"
+              style={{ color: "#3d3d3d", fontSize: 22, marginTop: 20 }}
+            >
+              <span style={{ fontWeight: 500 }}>Afraid of commitment?</span> Us
+              too. We'll refund your shipping label if you haven't dropped your
+              package in the mail yet.
             </Typography>
           </Grid>
 
