@@ -33,6 +33,14 @@ function NewSolutionsSection() {
               Grab that old ecommerce box you've got lying around and send us
               your electronic waste!
             </Typography>
+            <Typography
+              align="left"
+              style={{ color: "#3d3d3d", fontSize: 22, marginTop: 20 }}
+            >
+              <span style={{ fontWeight: 500 }}>Fun fact</span>: We generate ~46
+              lbs of e-waste per person per year in the U.S. And it's a pain in
+              the butt to deal with!
+            </Typography>
           </Grid>
 
           <Grid item xs={12} lg={4} style={{ marginBottom: 30 }}>
@@ -50,8 +58,8 @@ function NewSolutionsSection() {
             </Typography>
             <Typography align="left" style={{ color: "#3d3d3d", fontSize: 22 }}>
               Tell us about the box, follow some simple rules to make everything
-              safe, pay for your shipping label and then we'll email it to you
-              along with some product discounts.
+              safe, pay for your shipping label (around $10) and then we'll
+              email it to you along with some product discounts.
             </Typography>
           </Grid>
 
@@ -72,7 +80,12 @@ function NewSolutionsSection() {
               We'll make sure everything gets appropriately recycled at{" "}
               <MuiLink>
                 {" "}
-                <a href="www.e-stewards.org">e-stewards</a>
+                <a
+                  href="www.e-stewards.org"
+                  style={{ textDecoration: "underline" }}
+                >
+                  e-stewards
+                </a>
               </MuiLink>{" "}
               certified recycling centers across the U.S.
             </Typography>
