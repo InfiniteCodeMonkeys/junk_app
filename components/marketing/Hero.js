@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Typography, Button, Container } from "@material-ui/core";
+import Image from "next/image";
+import { Typography, Button, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -8,11 +9,28 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
     fontSize: 48,
     fontWeight: 800,
-    color: "#fff",
+    // color: "#fff",
     zIndex: 1,
     textAlign: "center",
   },
   subTitle: {
+    marginBottom: 20,
+    width: "50%",
+    fontSize: 24,
+    fontWeight: 500,
+    //color: "#fff",
+    textAlign: "center",
+    zIndex: 1,
+  },
+  mobileTitle: {
+    marginBottom: 20,
+    fontSize: 48,
+    fontWeight: 800,
+    color: "#fff",
+    zIndex: 1,
+    textAlign: "center",
+  },
+  mobileSubTitle: {
     marginBottom: 20,
     width: "50%",
     fontSize: 24,
@@ -45,34 +63,90 @@ function MarketingHero(props) {
   const classes = useStyles();
   return (
     <>
-      <div style={{ marginTop: 45 }} />
-      <div
-        style={{
-          width: "100%",
-          zIndex: 0,
-          position: "relative",
-          height: "80vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
-          // backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
-        <Typography variant="h1" className={classes.title}>
-          {props.title}
-        </Typography>
-        <Typography variant="h2" className={classes.subTitle}>
-          {props.subTitle}
-        </Typography>
-        <Link href="/wizard">
-          <Button variant="contained" size="large" className={classes.button}>
-            Mail my junk
-          </Button>
-        </Link>
-      </div>
+      <Hidden only={["md", "sm", "xs"]} implementation="css">
+        <div style={{ display: "flex" }}>
+          <div
+            style={{
+              width: "50%",
+              zIndex: 0,
+              position: "relative",
+              height: "80vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              //backgroundColor: "#171718",
+              // backgroundColor: "#365d63",
+              // background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
+              // backgroundRepeat: "no-repeat",
+              // backgroundSize: "cover",
+            }}
+          >
+            <Typography variant="h1" className={classes.title}>
+              {props.title}
+            </Typography>
+            <Typography variant="h2" className={classes.subTitle}>
+              {props.subTitle}
+            </Typography>
+            <Link href="/wizard">
+              <Button
+                variant="contained"
+                size="large"
+                className={classes.button}
+              >
+                Mail my junk
+              </Button>
+            </Link>
+          </div>
+          <div
+            style={{ position: "relative", width: 900 }}
+            className={classes.image}
+          >
+            <Image
+              src="/images/junkbox_cropped.jpg"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+        </div>
+      </Hidden>
+      <Hidden only={["lg", "xl"]} implementation="css">
+        <div style={{ marginTop: 45 }}>
+          <div
+            style={{
+              width: "100%",
+              zIndex: 0,
+              position: "relative",
+              height: "80vh",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              // backgroundColor: "#171718",
+              // backgroundColor: "#365d63",
+              background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }}
+          >
+            <Typography variant="h1" className={classes.mobileTitle}>
+              {props.title}
+            </Typography>
+            <Typography variant="h2" className={classes.mobileSubTitle}>
+              {props.subTitle}
+            </Typography>
+            <Link href="/wizard">
+              <Button
+                variant="contained"
+                size="large"
+                className={classes.button}
+              >
+                Mail my junk
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Hidden>
     </>
   );
 }
