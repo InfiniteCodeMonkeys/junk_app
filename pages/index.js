@@ -53,7 +53,7 @@ export default function Home() {
         <Hero
           title="Put your junk in a box"
           subTitle="Easily recycle unwanted electronics in 5 minutes or less"
-          //subTitle="We help you sustainably recycle old chargers, earphones, cameras, phones, laptops, and batteries."
+          uid={uid}
         />
 
         <How />

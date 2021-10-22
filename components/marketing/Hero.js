@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Typography, Button, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import firebase from "utils/firebase";
+import router from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -61,6 +63,14 @@ const useStyles = makeStyles((theme) => ({
 
 function MarketingHero(props) {
   const classes = useStyles();
+
+  const handleClick = () => {
+    firebase.analytics().logEvent("Access Wizard", {
+      uid: props.uid,
+    });
+    router.push("/wizard");
+  };
+
   return (
     <>
       <Hidden only={["md", "sm", "xs"]} implementation="css">
@@ -75,11 +85,6 @@ function MarketingHero(props) {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              //backgroundColor: "#171718",
-              // backgroundColor: "#365d63",
-              // background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
-              // backgroundRepeat: "no-repeat",
-              // backgroundSize: "cover",
             }}
           >
             <Typography variant="h1" className={classes.title}>
@@ -88,15 +93,15 @@ function MarketingHero(props) {
             <Typography variant="h2" className={classes.subTitle}>
               {props.subTitle}
             </Typography>
-            <Link href="/wizard">
-              <Button
-                variant="contained"
-                size="large"
-                className={classes.button}
-              >
-                Mail my junk
-              </Button>
-            </Link>
+
+            <Button
+              variant="contained"
+              size="large"
+              className={classes.button}
+              onClick={handleClick}
+            >
+              Mail my junk
+            </Button>
           </div>
           <div
             style={{ position: "relative", width: 900 }}

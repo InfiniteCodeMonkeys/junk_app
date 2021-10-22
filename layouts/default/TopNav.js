@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import firebase from "utils/firebase";
 import Section from "../../components/primitives/Section";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -130,7 +131,12 @@ function Navbar(props) {
 
   const logo = props.logo;
 
-  const pathname = router.pathname;
+  const handleClick = () => {
+    firebase.analytics().logEvent("Access Wizard", {
+      uid: "From TopNav",
+    });
+    router.push("/wizard");
+  };
 
   return (
     <Section bgColor={props.color} size="auto">
@@ -166,16 +172,15 @@ function Navbar(props) {
                 />
 
                 <div style={{ marginTop: 5 }}>
-                  <Link href="/wizard" passHref={true}>
-                    <Button
-                      component="a"
-                      variant="contained"
-                      className={classes.signUpButton}
-                      color="secondary"
-                    >
-                      Mail my Junk
-                    </Button>
-                  </Link>
+                  <Button
+                    component="a"
+                    variant="contained"
+                    className={classes.signUpButton}
+                    color="secondary"
+                    onClick={handleClick}
+                  >
+                    Mail my Junk
+                  </Button>
                 </div>
               </div>
             </div>
@@ -233,11 +238,10 @@ function Navbar(props) {
               <ListItemText>Contact Us</ListItemText>
             </ListItem>
           </Link>
-          <Link href="/#form">
-            <ListItem button={true} component="a">
-              <ListItemText>Get Started</ListItemText>
-            </ListItem>
-          </Link>
+
+          <ListItem button={true} component="a" onClick={handleClick}>
+            <ListItemText>Get Started</ListItemText>
+          </ListItem>
         </List>
       </Drawer>
     </Section>
