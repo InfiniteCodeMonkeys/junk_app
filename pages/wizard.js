@@ -23,7 +23,7 @@ function WizardPage(props) {
           size={1}
           textAlign="center"
         />
-        <Wizard id="#form" />
+        <Wizard />
       </Section>
     </>
   );

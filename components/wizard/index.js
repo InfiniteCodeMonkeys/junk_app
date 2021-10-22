@@ -83,6 +83,11 @@ function index() {
       //Send Pixel Info
       fbq.event("Entered Checkout", { currency: "USD", value: shippingCost });
 
+      firebase.analytics().logEvent("Entered Checkout", {
+        uid: uid,
+        value: shippingCost,
+      });
+
       const session = await apiRequest("create-stripe-checkout", "POST", {
         shippingCost,
       });
