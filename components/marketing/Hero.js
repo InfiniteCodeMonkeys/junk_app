@@ -128,8 +128,8 @@ function MarketingHero(props) {
               alignItems: "center",
               justifyContent: "center",
               //backgroundColor: "#171718",
-              //backgroundColor: "#365d63",
-              background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
+              backgroundColor: "#365d63",
+              //background: `linear-gradient(0deg, rgba(21, 27, 31, 0.6), rgba(21, 27, 31, 0.6)), url("/images/junkbox_cropped.jpg")`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
