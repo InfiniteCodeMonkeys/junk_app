@@ -1,11 +1,13 @@
 //get size and dimensions
 import React, { useState } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import Section from "components/primitives/Section";
 import SectionHeader from "components/primitives/SectionHeader";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
+import { Link as MuiLink } from "@material-ui/core";
 import {
   InputLabel,
   Select,
@@ -13,6 +15,8 @@ import {
   Typography,
   Button,
   CircularProgress,
+  FormControlLabel,
+  Checkbox,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -50,8 +54,13 @@ function Shipping({ data, setData, pending, contactEmail, contactName }) {
     weight: "",
     weightUnits: "",
   });
+  const [checked, setChecked] = useState(false);
 
   const classes = useStyles();
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
 
   const handleAddress = (event) => {
     setAddress({ ...address, [event.target.name]: event.target.value });
@@ -290,6 +299,28 @@ function Shipping({ data, setData, pending, contactEmail, contactName }) {
             style={{
               marginTop: 40,
               display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <FormControlLabel
+              label={[
+                <span style={{ fontSize: 22 }}>
+                  I agree to the{" "}
+                  <Link href="/terms-and-conditions">
+                    <MuiLink style={{ textDecoration: "underline" }}>
+                      Terms & Conditions
+                    </MuiLink>
+                  </Link>
+                  .
+                </span>,
+              ]}
+              control={<Checkbox checked={checked} onChange={handleCheck} />}
+            />
+          </div>
+          <div
+            style={{
+              marginTop: 40,
+              display: "flex",
               justifyContent: "flex-end",
             }}
           >
@@ -298,6 +329,7 @@ function Shipping({ data, setData, pending, contactEmail, contactName }) {
               type="submit"
               className={classes.completeButton}
               size="large"
+              disabled={!checked}
             >
               {!pending && <span>Calculate & Pay</span>}
 
