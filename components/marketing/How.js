@@ -44,7 +44,12 @@ function NewSolutionsSection() {
           </Grid>
 
           <Grid item xs={12} lg={4} style={{ marginBottom: 30 }}>
-            <Image width="300" height="300" src="/images/box.png" />
+            <Image
+              width="300"
+              height="300"
+              src="/images/box.png"
+              alt="Cardboard box."
+            />
           </Grid>
         </Grid>
 
@@ -73,7 +78,12 @@ function NewSolutionsSection() {
           </Grid>
 
           <Grid item xs={12} lg={4} style={{ marginBottom: 30 }}>
-            <Image width="300" height="300" src="/images/mailbox.gif" />
+            <Image
+              width="300"
+              height="300"
+              src="/images/mailbox.gif"
+              alt="GIF of a mailbox."
+            />
           </Grid>
         </Grid>
 
@@ -101,7 +111,12 @@ function NewSolutionsSection() {
           </Grid>
 
           <Grid item xs={12} lg={4} style={{ marginBottom: 30 }}>
-            <Image width="300" height="180" src="/images/pug.gif" />
+            <Image
+              width="300"
+              height="180"
+              src="/images/pug.gif"
+              alt="GIF of pug sorting recyclables."
+            />
           </Grid>
         </Grid>
       </div>
