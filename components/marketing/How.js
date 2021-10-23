@@ -101,14 +101,7 @@ function NewSolutionsSection() {
           </Grid>
 
           <Grid item xs={12} lg={4} style={{ marginBottom: 30 }}>
-            <iframe
-              src="https://giphy.com/embed/2dPo5eE97Aw5q"
-              width="300"
-              height="180"
-              frameBorder="0"
-              class="giphy-embed"
-              allowFullScreen
-            />
+            <Image width="300" height="180" src="/images/pug.gif" />
           </Grid>
         </Grid>
       </div>
