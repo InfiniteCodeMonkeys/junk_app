@@ -24,6 +24,7 @@ export default function Home() {
         console.log(`Error Msg: ${errorMessage} with error code ${errorCode}`);
       });
   }, []);
+
   return (
     <div>
       <Head>

@@ -77,6 +77,7 @@ export default async (req, res) => {
                 from: "hello@junk-drawr.com",
                 template_id: TEMPLATE_USER,
                 dynamic_template_data: {
+                  name: order.address.contactName,
                   shippingURL: transaction.label_url,
                   trackingURL: transaction.tracking_url_provider,
                 },
@@ -87,6 +88,7 @@ export default async (req, res) => {
                 from: "hello@junk-drawr.com",
                 template_id: TEMPLATE_ADMIN,
                 dynamic_template_data: {
+                  name: order.address.contactName,
                   shippingURL: transaction.label_url,
                   trackingURL: transaction.tracking_url_provider,
                 },
