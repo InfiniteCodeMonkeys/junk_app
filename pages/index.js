@@ -57,7 +57,8 @@ export default function Home() {
         threshold: 30,
         eventThrottle: 100,
         onExitIntent: () => {
-          setShowPopup(true);
+          //  setShowPopup(true);
+          setShowPopup(false);
         },
       });
       return () => {
