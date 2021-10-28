@@ -5,6 +5,7 @@ import * as fbq from "utils/pixel";
 import "../styles/globals.css";
 import dynamic from "next/dynamic";
 import firebase from "utils/firebase";
+import { hotjar } from "react-hotjar";
 const CrispWithNoSSR = dynamic(() => import("utils/crisp"), { ssr: false });
 import { ThemeProvider } from "utils/theme.js";
 import DefaultLayout from "../layouts/default";
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       firebase.analytics();
+      hotjar.initialize(2674867, 6);
     }
   }, []);
 
