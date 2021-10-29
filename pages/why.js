@@ -8,8 +8,8 @@ const whyItems = [
     title: "1. It's better for the environment",
     body: "Electronics sent to the landfill can leak toxins into the soil and at times the water supply. ",
     image: "/images/landfill.jpg",
-    width: 400,
-    height: 400,
+    width: 4256,
+    height: 2744,
   },
   {
     title: "2. E-waste contains valuable resources for the economy",
