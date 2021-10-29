@@ -19,7 +19,7 @@ export default function About() {
         <Container style={{ marginTop: 80 }} maxWidth="md">
           <SectionHeader
             title="Who the hell are we?"
-            subtitle=" Environmentalists with en enterpreneurial bent"
+            subtitle=" Environmentalists with an enterpreneurial bent"
             size={3}
             textAlign="center"
           />
