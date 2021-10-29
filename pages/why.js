@@ -15,8 +15,8 @@ const whyItems = [
     title: "2. E-waste contains valuable resources for the economy",
     body: "Lithium, nickel, cobalt, gold, silver, and carbon can all be found in modern e-waste. These materials are critical ",
     image: "/images/junkdrawer.jpg",
-    width: 400,
-    height: 400,
+    width: 1200,
+    height: 928,
   },
   {
     title: "3. It's circular",
