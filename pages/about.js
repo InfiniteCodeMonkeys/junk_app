@@ -15,7 +15,7 @@ export default function About() {
           content="Junk Drawr is an electronic waste processing company. Here's why we got into business and what we're trying to do."
         />
       </Head>
-      <Section bg="light" textColor="text">
+      <Section bg="light" textColor="text" style={{ height: "100%" }}>
         <Container style={{ marginTop: 80 }} maxWidth="md">
           <SectionHeader
             title="Who the hell are we?"
