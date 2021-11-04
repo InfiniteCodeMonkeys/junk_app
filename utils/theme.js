@@ -4,7 +4,6 @@ import {
   createMuiTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@material-ui/core/styles";
-import * as colors from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createLocalStorageStateHook } from "use-local-storage-state";

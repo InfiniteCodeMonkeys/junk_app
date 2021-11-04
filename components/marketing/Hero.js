@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { createContact } from "utils/db";
 import router from "next/router";
 import * as fbq from "utils/pixel";
+import firebase from "utils/firebase";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -83,6 +84,10 @@ function MarketingHero(props) {
     // Write to Firestore
     createContact(props.uid, data).then(() => {
       fbq.event("SignUp", {
+        contactName: data.contactName,
+        contactEmail: data.contactEmail,
+      });
+      firebase.analytics().logEvent("sign_up", {
         contactName: data.contactName,
         contactEmail: data.contactEmail,
       });
