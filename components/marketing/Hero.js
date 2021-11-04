@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Typography, Button, Hidden } from "@material-ui/core";
+import { Typography, Button, Hidden, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import firebase from "utils/firebase";
+import { useForm } from "react-hook-form";
+import { createContact } from "utils/db";
 import router from "next/router";
+import * as fbq from "utils/pixel";
 
 const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: 20,
     fontSize: 72,
     fontWeight: 800,
-    // color: "#fff",
+    color: "#4A4A4A",
     zIndex: 1,
     textAlign: "center",
   },
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: "90%",
     fontSize: 32,
     fontWeight: 500,
-    //color: "#fff",
+    color: "#4A4A4A",
     textAlign: "center",
     zIndex: 1,
   },
@@ -63,12 +65,37 @@ const useStyles = makeStyles((theme) => ({
 
 function MarketingHero(props) {
   const classes = useStyles();
+  const { handleSubmit } = useForm();
+  const [data, setData] = useState({
+    contactName: "",
+    contactEmail: "",
+    status: "Checkout Incomplete",
+  });
 
-  const handleClick = () => {
-    firebase.analytics().logEvent("Access Wizard", {
-      uid: props.uid,
+  const handleAddress = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
     });
-    router.push("/wizard");
+  };
+
+  const onSubmit = () => {
+    // Write to Firestore
+    createContact(props.uid, data).then(() => {
+      fbq.event("SignUp", {
+        contactName: data.contactName,
+        contactEmail: data.contactEmail,
+      });
+      // Router . push with query strings
+      router.push({
+        pathname: "/wizard",
+        query: {
+          contactName: data.contactName,
+          contactEmail: data.contactEmail,
+          id: props.uid,
+        },
+      });
+    });
   };
 
   return (
@@ -94,14 +121,44 @@ function MarketingHero(props) {
               {props.subTitle}
             </Typography>
 
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.button}
-              onClick={handleClick}
-            >
-              Mail my junk
-            </Button>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div style={{ display: "flex", margin: 20 }}>
+                <div style={{ backgroundColor: "#fff", marginRight: 40 }}>
+                  <TextField
+                    variant="outlined"
+                    type="text"
+                    label="Name"
+                    name="contactName"
+                    value={data.contactName}
+                    onChange={handleAddress}
+                    required
+                    color="#fff"
+                  />
+                </div>
+                <div style={{ backgroundColor: "#fff" }}>
+                  <TextField
+                    variant="outlined"
+                    type="text"
+                    label="Best Email"
+                    name="contactEmail"
+                    value={data.contactEmail}
+                    onChange={handleAddress}
+                    required
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  size="large"
+                  type="submit"
+                >
+                  {props.buttonText}
+                </Button>
+              </div>
+            </form>
           </div>
           <div
             style={{ position: "relative", width: 900 }}
@@ -140,15 +197,45 @@ function MarketingHero(props) {
             <Typography variant="h2" className={classes.mobileSubTitle}>
               {props.subTitle}
             </Typography>
-            <Link href="/wizard">
-              <Button
-                variant="contained"
-                size="large"
-                className={classes.button}
-              >
-                Mail my junk
-              </Button>
-            </Link>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div style={{ display: "flex", margin: 20 }}>
+                <div style={{ backgroundColor: "#fff", marginRight: 40 }}>
+                  <TextField
+                    variant="outlined"
+                    type="text"
+                    label="Name"
+                    name="contactName"
+                    value={data.contactName}
+                    onChange={handleAddress}
+                    required
+                    color="#fff"
+                  />
+                </div>
+                <div style={{ backgroundColor: "#fff" }}>
+                  <TextField
+                    variant="outlined"
+                    type="text"
+                    label="Best Email"
+                    name="contactEmail"
+                    value={data.contactEmail}
+                    onChange={handleAddress}
+                    required
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  size="large"
+                  type="submit"
+                >
+                  {props.buttonText}
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </Hidden>

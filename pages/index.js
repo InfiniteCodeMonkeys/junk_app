@@ -217,6 +217,7 @@ export default function Home() {
           title="Put your junk in a box"
           subTitle="Easily recycle unwanted electronics in 5 minutes or less"
           uid={uid}
+          buttonText="Mail My Junk"
         />
 
         <How />
