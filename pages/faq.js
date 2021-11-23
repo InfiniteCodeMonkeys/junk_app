@@ -15,7 +15,7 @@ function FaqPage(props) {
         "Don't send us anything dangerous. Check with the USPS for more information.",
     },
     {
-      question: "How can I send you?",
+      question: "How can I send it to you?",
       answer:
         "Everything else. But keep in mind, we're here to sort items for recycling. So, send us mostly things you think can be recycled. If you send us something really weird we'll feature it on our twitter.",
     },
