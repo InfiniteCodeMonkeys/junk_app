@@ -22,7 +22,7 @@ function FaqPage(props) {
     {
       question: "What do you do with the junk I send?",
       answer:
-        "It really depends on what you send. We have to sort all of it and then decide what is best for the material. Recyclable materials get bundled and sent to a domestic recycler. When it makes sense, other items might get donated, upcycled, or unfortunately, disposed of.",
+        "Your e-waste gets sorted, bundled and sent to an e-stewards certified electronic waste recycler in the United States.",
     },
     {
       question: "What's in it for me?",
